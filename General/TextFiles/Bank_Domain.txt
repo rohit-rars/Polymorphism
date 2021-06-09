@@ -1,0 +1,30 @@
+National Automated Clearing House Association (Nacha) manages the development, administration, and governance of the ACH Network, the backbone for the electronic movement of money and data in the United States. It is funded by the financial institutions it governs. The ACH Network serves as a network for direct consumer, business, and government payments, and annually facilitates billions of payments such as direct deposit and direct payment. The ACH Network is governed by the Nacha Operating Rules, a set of rules that guide risk management
+
+Lots of people get hung up on the differences between ACH and Nacha, but it’s very simple. The ACH network is the actual technology that moves payments from bank account to bank account. That technology is overseen by Nacha, an organization that sets and enforces the rules which the ACH network needs to abide by. However, Nacha does not operate or run the network itself – that’s the job of the ACH operators (the Federal Reserve and the Electronic Payments Network).
+
+MICR Required By Federal Reserve
+
+How Do You Read a Magnetic Ink Character Recognition (MICR) Line?
+The data printed with MICR technology appears on the bottom left of a check and includes three strings of characters. From left, they are:
+
+The nine-character routing number that identifies the bank branch
+The 12-character account number that identifies the payer
+The four-character check number that indicates which check in a series that the account holder has used.
+It looks like this: 000000000 000000000000 0000
+
+MICR Fonts:
+The E-13B Font
+The CMC-7 Font
+
+Life Cycle of Check:
+1. Write a check
+2. Deposits Check into the bank.
+3. Bank Sends the check to be processed via micromagnetic coding line.
+4. Bank Send the check to Federal Reserve for Processing.
+5. Check goes through sorter machine
+6. The Federal Reserve issue reports to bank for deposit and the bank gets the report to deposit into the account or withdraw the money.
+7. Customer will recieve the statement withdrawal or deposit.
+
+ON-US Transaction: where the issuing bank and the acquiring bank are the same entity
+
+OFF-US Transaction: where the issuing bank and acquiring bank are different entities

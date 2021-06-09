@@ -1,0 +1,184 @@
+REST
+
+REST stands for REpresentational State Transfer and API stands for Application Program Interface. REST is a software architectural style that defines the set of rules to be used for creating web services. Web services which follow the REST architectural style are known as RESTful web services. It allows requesting systems to access and manipulate web resources by using a uniform and predefined set of rules. Interaction in REST based systems happen through Internet’s Hypertext Transfer Protocol (HTTP).
+
+RESTful Web Services are basically REST Architecture based Web Services. In REST Architecture everything is a resource. RESTful web services are light weight, highly scalable and maintainable and are very commonly used to create APIs for web-based applications. REST stands for REpresentational State Transfer. REST is web standards based architecture and uses HTTP Protocol. It revolves around resource where every component is a resource and a resource is accessed by a common interface using HTTP standard methods.
+
+GET − Provides a read only access to a resource.
+
+POST − Used to create a new resource.
+
+DELETE − Used to remove a resource.
+
+PUT − Used to update a existing resource or create a new resource.
+
+Return Types of Web API Methods:
+Void: It's not necessary that all action methods must return something. It can have void return type.
+
+public class StudentController : ApiController
+{
+    public void Delete(int id)
+    {
+        DeleteStudentFromDB(id);
+    }
+}
+
+As you can see above Delete action method returns void. It will send 204 "No Content" status code as a response when you send HTTP DELETE request as shown below.
+
+IHttpActionResult: The IHttpActionResult was introduced in Web API 2 (.NET 4.5). An action method in Web API 2 can return an implementation of IHttpActionResult class which is more or less similar to ActionResult class in ASP.NET MVC. You can create your own class that implements IHttpActionResult or use various methods of ApiController class that returns an object that implement the IHttpActionResult.
+
+HttpResponseMessage: Web API controller always returns an object of HttpResponseMessage to the hosting infrastructure. You can also create and return an object of HttpResponseMessage directly from an action method. The advantage of sending HttpResponseMessage from an action method is that you can configure a response your way. You can set the status code, content or error message (if any) as per your requirement.
+
+Create Custom Result Type: You can create your own custom class as a result type that implements IHttpActionResult interface.
+
+
+Web services based on REST Architecture are known as RESTful web services. These webservices uses HTTP methods to implement the concept of REST architecture. A RESTful web service usually defines a URI, Uniform Resource Identifier a service.
+
+
+The ASP.NET Web API is an extensible framework for building HTTP based services that can be accessed in different applications on different platforms such as web, windows, mobile etc. It works more or less the same way as ASP.NET MVC web application except that it sends data as a response instead of html view. It is like a webservice or WCF service but the exception is that it only supports HTTP protocol.
+
+Web API Versioning using QueryString parameter
+Web API Versioning using URI
+
+Media type formatters are classes responsible for serializing request/response data so that Web API can understand the request data format and send data in the format which client expects.
+JsonMediaTypeFormatter
+XmlMediaTypeFormatter
+FormUrlEncodedMediaTypeFormatter
+JQueryMvcFormUrlEncodedFormatter
+
+Web Services
+A Web Service is a software program that uses XML to exchange information with other software via common internet protocols. In a simple sense, Web Services are a way of interacting with objects over the Internet.
+
+
+Web Service:
+
+1) It is a SOAP-based service and returns data as XML.
+2) It only supports the HTTP protocol.
+3) It is not open source but can be used by any client that understands XML.
+4) It requires a SOAP protocol to receive and send data over the network, so it is not a light-weight architecture.
+
+Web API:
+
+1) A Web API is an HTTP based service and returns JSON or XML data by default.
+2) It supports the HTTP protocol.
+3) It can be hosted within an application or IIS.
+4) It is open source and it can be used by any client that understands JSON or XML.
+5) It has light-weight architecture and good for devices which have limited bandwidth, like mobile devices.
+
+
+SOAP stands for Simple Object Access Protocol whereas REST stands for Representational State Transfer.
+SOAP is a protocol whereas REST is an architectural pattern.
+SOAP uses service interfaces to expose its functionality to client applications while REST uses Uniform Service locators to access to the components on the hardware device.
+SOAP needs more bandwidth for its usage whereas REST doesn’t need much bandwidth.
+SOAP only works with XML formats whereas REST work with plain text, XML, HTML and JSON.
+
+
+WCF is the short form of Windows Communication Foundation, and it is basically a framework that is used for the creation of distributed and interoperable applications. This platform came into the limelight in .Net 3.0 Framework. It is commonly utilized for Service Oriented Architecture (SOA), which is renowned for building reliable, secure, and transaction-oriented service.
+
+WCF is built to develop SOAP-based services and bindings, and thus it utilizes standard XML schema over HTTP. This platform is ideal for things like message queues, end-to-end message security, duplex communication, distributed transaction, and one way messaging, among others. WCF allows you to send data asynchronously from one end to the next.
+
+
+Address:
+
+ In WCF, every service is associated with a unique address. The address provides two important elements: the location of the service and the transport protocol or transport schema used to communicate with the service. The location portion of the address indicates the name of the target machine, site, or network; a communication port, pipe, or queue; and an optional specific path or URI. A URI is a Universal Resource Identifier, and can be any unique string, such as the service name or a GUID.
+
+WCF supports following transport schemas
+
+HTTP, TCP, Peer Network, IPC(Inter Process communication), MSMQ
+
+Bindings:
+Specifies how a service is accessible. In other words: how the two parties will communicate in terms of transport (HTTP, TCP, NamedPipe, Peer2Peer and MSMQ), encoding (text, binary etc.) and protocols (like transactional support or reliable messaging).
+
+Basic binding
+TCP binding
+Peer network binding
+IPC binding
+MSMQ binding
+Duplex WS binding
+
+Contracts:
+
+In WCF, all services expose contracts. The contract is a platform-neutral and standard way of describing what the service does. WCF defines four types of contracts.
+
+Service Contract:
+A service contract defines the operations which are exposed by the service to the outside world. A service contract is the interface of the WCF service and it tells the outside world what the service can do. It may have service-level settings, such as the name of the service and namespace for the service.
+
+Operation Contract:
+An operation contract is defined within a service contract. It defines the parameters and return type of an operation. An operation contract can also defines operation-level settings, like as the transaction flow of the op-eration, the directions of the operation (one-way, two-way, or both ways), and fault contract of the operation.
+
+Data Contract:
+A data contract defines the data type of the information that will be exchange be-tween the client and the service. A data contract can be used by an operation contract as a parameter or return type, or it can be used by a message contract to define elements.
+
+Message Contract:
+When an operation contract required to pass a message as a parameter or return value as a message, the type of this message will be defined as message contract. A message contract defines the elements of the message (like as Message Header, Message Body), as well as the message-related settings, such as the level of message security.
+
+It is also based on SOAP and return data in XML form.
+
+It is the evolution of the web service(ASMX) and support various protocols like TCP, HTTP, HTTPS, Named Pipes, MSMQ.
+
+The main issue with WCF is, its tedious and extensive configuration.
+
+It is not open source but can be consumed by any client that understands xml.
+
+It can be hosted with in the applicaion or on IIS or using window service.
+
+To Whom Choose Between WCF or WEB API
+Choose WCF when you want to create a service that should support special scenarios such as one way messaging, message queues, duplex communication, etc.
+
+Choose WCF when you want to create a service that can use fast transport channels when available, such as TCP, Named Pipes, or maybe even UDP (in WCF 4.5), and you also want to support HTTP when all other transport channels are unavailable.
+
+Choose Web API when you want to create a resource-oriented service over HTTP that can use the full features of HTTP (like URIs, request/response headers, caching, versioning, various content formats).
+
+Choose Web API when you want to expose your service to a broad range of clients including browsers, mobiles, iphone, and tablets.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

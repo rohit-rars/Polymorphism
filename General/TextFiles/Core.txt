@@ -1,0 +1,92 @@
+Core Versions
+
+.NET Core 2.1
+.NET Core 3.1 (Using this)
+.NET 5
+
+ASP.NET Core is a cross-platform, high-performance, and open-source web application framework.
+
+Cross-Platform: The main advantage of ASP.NET Core is that it’s not tied to a Windows operating system, like the legacy ASP.NET framework. You can develop and run production-ready ASP.NET Core apps on Linux or a Mac.
+
+High Performance: It’s designed from scratch, keeping performance in mind. It’s now one of the fastest web application frameworks.
+
+Open Source: Finally, it’s open-source and actively contributed by thousands of developers all over the world.
+
+Both the ASP.NET and ASP.NET Core run on C#, an object-oriented, general-purpose programming language. ASP.NET Core inherits many concepts and features from its ASP.NET heritage, but it’s fundamentally a new framework. 
+
+Startup Class:
+This class is described by its name: startup. It is the entry point of the application. It configures the request pipeline which handles all requests made to the application.
+
+Yes, this class is mandatory in ASP.net core application. It can have any access modifier (public, private, internal). This is the entry point of the ASP.net application. It contains application configuration related items.
+
+and it is not necessary that the class name be "Startup"
+
+Multiple Startup:
+When the app defines separate Startup classes for different environments (for example, StartupDevelopment), the appropriate Startup class is selected at runtime. The class whose name suffix matches the current environment is prioritized.
+
+ConfigureServices method of startup class?
+
+This is an optional method of startup class. It can be used to configure the services that are used by the application. This method calls first when the application is requested for the first time. Using this method, we can add the services to the DI container, so services are available as a dependency in controller constructor.
+
+What is the use of the Configure method of startup class?
+It defines how the application will respond to each HTTP request. We can configure the request pipeline by configuring the middleware. It accepts IApplicationBuilder as a parameter and also it has two optional parameters: IHostingEnvironment and ILoggerFactory. Using this method, we can configure built-in middleware such as routing, authentication, session, etc. as well as third-party middleware.
+
+What is middleware?
+It is software which is injected into the application pipeline to handle request and responses. They are just like chained to each other and form as a pipeline. The incoming requests are passes through this pipeline where all middleware is configured, and middleware can perform some action on the request before passes it to the next middleware. Same as for the responses, they are also passing through the middleware but in reverse order.
+
+What is routing in ASP.NET Core?
+Routing is functionality that map incoming request to the route handler. The route can have values (extract them from URL) that used to process the request. Using the route, routing can find route handler based on URL. All the routes are registered when the application is started. There are two types of routing supported by ASP.NET Core
+
+-> The conventional routing
+-> Attribute routing
+
+The Routing uses routes for map incoming request with route handler and Generate URL that used in response. Mostly, the application having a single collection of routes and this collection are used for the process the request. The RouteAsync method is used to map incoming request (that match the URL) with available in route collection.
+
+enable Session in ASP.NET Core?
+The middleware for the session is provided by the package Microsoft.AspNetCore.Session. To use the session in ASP.NET Core application, we need to add this package to csproj file and add the Session middleware to ASP.NET Core request pipeline.
+
+public class Startup
+ {
+ public void ConfigureServices(IServiceCollection services)
+ {
+ ….
+ ….
+ services.AddSession();
+ services.AddMvc();
+ }
+ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+ {
+ ….
+ ….
+ app.UseSession();
+ ….
+ ….
+ }
+ }
+ 
+ 
+What are the various JSON files available in ASP.NET Core?
+There are following JSON files in ASP.NET Core :
+
+global.json - The global.json file allows you to define which .NET SDK version is used when you run .NET CLI commands. Selecting the .NET SDK is independent from specifying the runtime your project targets. 
+
+launchsettings.json - The development environment can enable features that shouldn't be exposed in production. The environment for local machine development can be set in the Properties\launchSettings.json file of the project.The launchSettings.json file: Is only used on the local development machine, Is not deployed and contains profile settings.
+
+appsettings.json - The appsettings.json file is an application configuration file used to store configuration settings such as database connections strings, any application scope global variables. To access the configuration information within the Startup class, you need to use the IConfiguration service which is provided by the ASP.NET Core Framework. So, what you need to do is just inject the IConfiguration service through the constructor of the Startup class.
+
+public class Startup
+{
+	private IConfiguration _config;
+	// Here we are using Dependency Injection to inject the Configuration object
+	public Startup(IConfiguration config)
+	{
+		_config = config;
+	}
+	...
+}
+
+bundleconfig.json: The bundleconfig.json file is a standard JSON file and very easy to understand. In this file each bundle is named with the "outputFileName" field and the "inputFiles" to be bundled into that output are simply an array of files.
+
+bower.json
+
+package.json

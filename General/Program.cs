@@ -10,6 +10,29 @@ namespace General
     {
         static void Main(string[] args)
         {
+            string tempString = "rohit arora";
+            while(tempString.Length > 0)
+            {
+                int count = 0;
+                for (int i = 0; i < tempString.Length; i++)
+                {
+                    if(!string.IsNullOrWhiteSpace(tempString[0].ToString()) 
+                        && tempString[0].ToString().ToLower() == tempString[i].ToString().ToLower())
+                    {
+                        count++;
+                    }
+                }
+
+                if(count > 1)
+                {
+                    Console.WriteLine(string.Format("{0} Count is: {1}", tempString[0], count));
+                }
+
+                tempString = tempString.ToLower().Replace(tempString[0].ToString().ToLower(), string.Empty);
+                Console.WriteLine(tempString.Length);
+            }
+            
+
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 4; j > i; j--)
@@ -59,6 +82,41 @@ namespace General
             if(foundat > -1)
             {
                 Console.WriteLine("found at: " + foundat);
+            }
+
+            // declaring and initializing the array
+            int[] arr = new int[] { 1, 9, 6, 7, 5, 9 };
+
+            int temp;
+
+            // traverse 0 to array length
+            for (int i = 0; i < arr.Length - 1; i++)
+
+                // traverse i+1 to array length
+                for (int j = i + 1; j < arr.Length; j++)
+
+                    // compare array element with 
+                    // all next element
+                    if (arr[i] > arr[j])
+                    {
+
+                        temp = arr[j];
+                        arr[j] = arr[i];
+                        arr[i] = temp;
+
+                        /* Without using var
+                         * a = 10, b = 5;
+                         * 
+                         * a = a+b; 15
+                         * b = a - b; 10
+                         * a = a - b; 5
+                         */
+                    }
+
+            // print all element of array
+            foreach (int value in arr)
+            {
+                Console.Write(value + " ");
             }
 
             Console.ReadKey();

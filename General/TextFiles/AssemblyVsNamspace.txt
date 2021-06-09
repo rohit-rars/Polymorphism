@@ -1,0 +1,13 @@
+Namespace:
+1) it is a Collection of names wherein each name is Unique.
+2) They form the logical boundary for a Group of classes.
+3) Namespace must be specified in Project-Properties.
+
+Assembly:
+1) It is an Output Unit.
+2) It is a unit of Deployment & a unit of versioning.
+3) Assemblies contain MSIL code.
+4) Assemblies are Self-Describing. [e.g. metadata,manifest]
+5)An assembly is the primary building block of a .NET Framework application.
+6) It is a collection of functionality that is built, versioned, and deployed as a single implementation unit (as one or more files).
+7) All managed types and resources are marked either as accessible only within their implementation unit, or by code outside that unit.

@@ -1,0 +1,123 @@
+ASP.net Request Process:
+When the user requests a resource from a web server, HTTP.SYS which is a part of IIS picks it up. HTTP.SYS then send the request to corresponding Application Pool. Application Pool then forwards the request to the worker process associated with it. Worker process loads the correct ISAPI Extension based on the extension of the requested file. 
+
+aspnet_isapi.dll initiates HttpRuntime. HttpRutime calls the ProcessRequest method in the page requested which starts processing of the request.
+
+During this time, it also creates and initializes core objects such as HttpContext, HttpRequest, and HttpResponse.
+
+ISAPI extension will then create an HTTPRuntime object which will create all the core application objects and HTTPApplication object. HttpHandler associated with the page is then invoked and which in turn invokes the ProcessRequest. It process the request and generates the response. The response is sent back to the browser by the HTTP.SYS.
+
+Web Farm vs Web Garden:
+A hosting environment consisting of multiple web servers is said to be a Web Farm. Usually a load balancer is used to tie together the web servers, which routes incoming requests amongst the servers within the web farm. In web farm, a single application is hosted on multiple IIS server and these IIS servers are connected with the VIP (Virtual IP) with load balancer. Load balancer IPs is exposed to external world for accessing your web application. Hence, when a request comes to server from client, it first hits the load balancer, and then based on the traffic on each server; load balancer distributes the request to the corresponding web server.
+
+Web Garden
+By default, each application pool runs with a single worker process (W3Wp.exe). When an application pool runs with multiple worker process, it is called web garden.
+
+
+Application Pools:
+An application pool defines a group of one or more worker processes, configured with common settings. Application pools responsible for to isolate one or more applications into their own process. For example you have two different website like website-A and website-B and want to deploy on same server, then application pool isolate your website means website-A run on one application pool and website-B run on another application pool.
+
+Classic Mode
+As the word classic means, it is the standard way to do things. It has the same meaning here also. In Classic mode the IIS behaves like in IIS6, it won't use any new features of IIS7 or above. In IIS6 when any request comes to IIS, it identifies the type of request. If it's an ASP.NET request (.aspx, .asmx and so on.) it goes to the ASP.NET pipeline and is handled by the aspnet_isapi.dll and non-ASP.NET requests (HTML, .PHP and so on) are handled in the IIS pipeline.
+
+Integrated
+In Integrated all the requests are handled by a single pipeline of IIS. The ASP.NET pipeline is tightly integrated with an IIS pipeline. There is no separate pipeline for ASP.NET requests. Therefore in ASP.NET, HttpModule and Httphandler can be used to handle requests not from ASP.NET, in other words any custom Http module can be applied to a PHP request also.
+
+
+Following are the different stages of an ASP.NET page:
+
+Page Request- This is when the page is first requested from the server. When the page is requested, the server checks if it is requested for the first time. If so, then it needs to compile the page, parse the response and send it across to the user. If it is not the first time the page is requested, the cache is checked to see if the page output exists. If so, that response is sent to the user.
+
+Page Start – During this time, 2 objects, known as the Request and Response object are created. The Request object is used to hold all the information which was sent when the page was requested. The Response object is used to hold the information which is sent back to the user.
+
+Page Initialization – During this time, all the controls on a web page is initialized. So if you have any label, textbox or any other controls on the web form, they are all initialized.
+
+Page Load – This is when the page is actually loaded with all the default values. So if a textbox is supposed to have a default value, that value is loaded during the page load time.
+
+Validation – Sometimes there can be some validation set on the form. For example, there can be a validation which says that a list box should have a certain set of values. If the condition is false, then there should be an error in loading the page.
+
+Postback event handling – This event is triggered if the same page is being loaded again. This happens in response to an earlier event. Sometimes there can be a situation that a user clicks on a submit button on the page. In this case, the same page is displayed again. In such a case, the Postback event handler is called.
+
+Page Rendering – This happens just before all the response information is sent to the user. All the information on the form is saved, and the result is sent to the user as a complete web page.
+
+Unload – Once the page output is sent to the user, there is no need to keep the ASP.net web form objects in memory. So the unloading process involves removing all unwanted objects from memory.
+
+Following are the page life cycle events:
+
+PreInit - PreInit is the first event in page life cycle. It checks the IsPostBack property and determines whether the page is a postback. It sets the themes and master pages, creates dynamic controls, and gets and sets profile property values. This event can be handled by overloading the OnPreInit method or creating a Page_PreInit handler.
+
+Init - Init event initializes the control property and the control tree is built. This event can be handled by overloading the OnInit method or creating a Page_Init handler.
+
+InitComplete - InitComplete event allows tracking of view state. All the controls turn on view-state tracking.
+
+LoadViewState - LoadViewState event allows loading view state information into the controls.
+
+LoadPostData - During this phase, the contents of all the input fields are defined with the <form> tag are processed.
+
+PreLoad - PreLoad occurs before the post back data is loaded in the controls. This event can be handled by overloading the OnPreLoad method or creating a Page_PreLoad handler.
+
+Load - The Load event is raised for the page first and then recursively for all child controls. The controls in the control tree are created. This event can be handled by overloading the OnLoad method or creating a Page_Load handler.
+
+LoadComplete - The loading process is completed, control event handlers are run, and page validation takes place. This event can be handled by overloading the OnLoadComplete method or creating a Page_LoadComplete handler
+
+PreRender - The PreRender event occurs just before the output is rendered. By handling this event, pages and controls can perform any updates before the output is rendered.
+
+PreRenderComplete - As the PreRender event is recursively fired for all child controls, this event ensures the completion of the pre-rendering phase.
+
+SaveStateComplete - State of control on the page is saved. Personalization, control state and view state information is saved. The HTML markup is generated. This stage can be handled by overriding the Render method or creating a Page_Render handler.
+
+UnLoad - The UnLoad phase is the last phase of the page life cycle. It raises the UnLoad event for all controls recursively and lastly for the page itself. Final cleanup is done and all resources and references, such as database connections, are freed. This event can be handled by modifying the OnUnLoad method or creating a Page_UnLoad handler.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

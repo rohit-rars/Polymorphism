@@ -16,28 +16,20 @@ namespace OverloadingAndOverriding
      */
     class Program
     {
+        public static void Print(ref int b)
+        {
+            Console.WriteLine(b);
+        }
+        public static void Print(double a, double b)
+        {
+            Console.WriteLine(a);
+            Console.WriteLine(b);
+        }
         static void Main(string[] args)
         {
-            Base objBaseRefToDerived = new Derived();
-            objBaseRefToDerived.Show();//Output--> Show From Derived Class.
-
-            //BaseOverRiding objBaseRefToDerivedOver = new DerivedverRiding();
-            //objBaseRefToDerivedOver.Show();//Output--> Show From Base Class.
-
-            ClassA obj = new ClassB();
-            obj.print(); //Hi ClassA
-
-            ClassB Obj1 = new ClassC();
-            Obj1.print(); //Hi ClassA
-
-            ClassA Obj2 = new ClassC();
-            Obj2.print(); //Hi ClassA
-
-            // Creating the object of the derived class
-            My_Member objT = new My_Member();
-
-            // Access the method of derived class
-            objT.member();
+            int a = 5;
+            Print(ref a);
+            Print(10.5, 10.4);
 
             Console.ReadLine();
         }

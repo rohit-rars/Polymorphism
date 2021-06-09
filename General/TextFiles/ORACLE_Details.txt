@@ -1,0 +1,43 @@
+Oracle Data Provider for .Net - Managed Driver:
+ 
+In addition to basic Oracle client connectivity software, .NET applications require the use of what is known as a managed data provider (where "managed" refers to code managed by the .NET framework). The data provider is the layer between the .NET application code and the Oracle client connectivity software.
+
+The Oracle Data Provider for .NET (ODP.NET) is Oracle's high performance ADO.NET 2.0 compliant data provider that exposes a complete set of Oracle specific features and tuning options including support for Real Application Clusters, XML DB, and advanced security. 
+
+When ODP.NET and any required Oracle client connectivity software is installed, application development using Visual Studio can begin. It is a good idea to confirm client connectivity before starting development. If you can connect to Oracle using SQL*Plus on the same machine as Visual Studio, then you know that your Oracle client-side software is properly installed and configured.
+
+
+Oracle Data Provider for .Net - Unmanaged Driver:
+There are three driver types: ODP.NET Core; ODP.NET, Managed Driver; and ODP.NET, Unmanaged Driver. ODP.NET Core is designed for multi-platform .NET (Core) applications. ODP.NET, Managed Driver is 100% managed code .NET Framework provider. Developers deploy a single assembly in a deployment package smaller than 10 MB. ODP.NET, Unmanaged Driver contains more features than the managed driver since it can access functionality built into the Oracle Database Client.
+
+using Oracle.DataAccess.Client;
+using Oracle.DataAccess.Types;
+
+or
+ 
+ 
+using Oracle.ManagedDataAccess
+
+Oracle Data Provider for .NET - Core:
+Oracle Data Provider for .NET (ODP.NET) Core is an ADO.NET driver that provides fast data access from Microsoft .NET Core clients to Oracle databases. ODP.NET Core consists of a single 100% managed code dynamic-link library.
+Install-Package Oracle.ManagedDataAccess.Core -Version 3.21.1
+
+Code Example:
+
+string oradb = "Data Source=ORCL;User Id=hr;Password=hr;";
+OracleConnection conn = new OracleConnection(oradb); // C#
+conn.Open();
+OracleCommand cmd = new OracleCommand();
+cmd.Connection = conn;
+cmd.CommandText = "select department_name from departments where department_id = 10"; cmd.CommandType = CommandType.Text;
+OracleDataReader dr = cmd.ExecuteReader();
+dr.Read();
+label1.Text = dr.GetString(0);
+conn.Dispose();
+
+
+OracleParameter parm = new OracleParameter();
+parm.OracleDbType = OracleDbType.Decimal;
+parm.Value = textBox1.Text;
+cmd.Parameters.Add(parm);
+cmd.CommandText = "select department_name from departments where department_id = :1";

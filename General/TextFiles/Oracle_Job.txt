@@ -1,0 +1,39 @@
+Team Description
+
+Our team develops Windows and .NET platform based products that are used by all types of mission critical applications. Our products provide cutting edge technologies to our customers for building world-class applications that are highly available, scalable, and optimal. Our products enable applications to take full advantage of Oracle database features. We provide complete solution for application development cycle including database schema development, source control, runtime, debugging and performance analysis. As a member of our team you will have the opportunity to develop cutting edge technologies and provide solutions to our large number of customers worldwide.
+
+Products developed in the group like ODP.NET (Oracle Data Provider for .NET, which is based on Microsoft’s ADO.NET specification), Oracle Entity Framework (EF) Core which is a database provider that allows Entity Framework Core to be used with Oracle databases , Oracle Providers for ASP.NET (which is based on Microsoft’s ASP.NET provider specification), and ODE.NET (Database Extensions for .NET) provides runtime interface. We frequently discuss with Microsoft development teams to shape the next version of .NET to develop run-time solutions for Oracle that are optimal and scalable. But more importantly, we provide Oracle-specific features that extend beyond the specifications, such as our Real Application Cluster-aware ODP.NET connection pool.
+
+ 
+
+Microsoft Visual Studio (VS) is the primary IDE for the development of Windows and .NET application. To provide complete Oracle application development life cycle support, we provide tools that are integrated well within Microsoft Visual Studio. We provide code generation wizards for several languages including C#, VB and C++ that helps application developers to quickly develop their application. To quickly develop stored procedures we provide PL/SQL stored procedures wizard. For ease of debugging we allow debugging of PL/SQL stored procedures from VS debugger. We provide tools that provide SQL Performance analysis. To create and manage database objects, we provide designers for tables, views, roles, stored procedures and UDTs etc. Our goal is to make Oracle database application developer productive by providing intuitive and effortless development life cycle tools from within VS.
+
+
+Duties and tasks are varied and complex, requiring independent judgment. The candidate must be fully competent in own area of expertise.
+
+* Should be proficient in C/C++, with at least 3 years of experience
+
+* Experience with C# and .NET, with minimum two years of experience.
+
+* Strong software design skills
+
+* Ability to understand and solve complex problems
+
+* Ability to innovate and think out of the box
+
+* Team player with excellent communication skills
+
+* Knowledge of Microsoft technologies, including data access APIs such as ADO.NET
+
+* Preferred Qualifications: BS or MS degree or equivalent experience relevant to functional area.
+
+
+Involved in Software Development for Oracle Data Access and Database Integration with Microsoft .NET Platform and Windows.
+
+Oracle Data Provider for .NET (Managed Driver)
+Oracle Data Provider for .NET (Unmanaged Driver)
+Oracle Data Provider for .NET Core
+Oracle EF CORE Driver
+Oracle EF Driver
+Oracle OLE DB Driver
+Oracle OLAP Driver
