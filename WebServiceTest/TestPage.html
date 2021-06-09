@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript">
+        function callingwebservicemethod() {
+            debugger;
+            alert("in callingwebservicemethod.")
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost/WebServiceTest/WebServiceMain.asmx/HelloWorld",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) { },
+                    failure: function (msg) { alert(msg); }
+                });
+        }
+    </script>
+</head>
+<body onload="callingwebservicemethod();">
+
+</body>
+</html>
