@@ -1,0 +1,133 @@
+View Encapsulation in Angular defines how the styles defined in the template affects the other parts of the application.
+
+The angular uses three strategies, while rendering the view:
+
+-> ViewEncapsulation.Emulated //This is default
+In a HTML page, we can easily add a id or a class to the element to increase the specificity of the CSS rules so that the CSS rules do not interfere with each other..
+
+The ViewEncapsulation.Emulated strategy in angular adds the unique HTML attributes to the component CSS styles and to the markup so as to achieve the encapsulation. This is not true encapsulation. The Angular Emulates the encapsulation, Hence the name Emulated.
+
+-> ViewEncapsulation.ShadowDOM
+The Shadow DOM is a scoped sub-tree of the DOM. It is attached to a element (called shadow host) of the DOM tree. The shadow dom do not appear as child node of the shadow host, when you traverse the main DOM.
+
+The browser keeps the shadow DOM separate from the main DOM. The rendering of the Shadow dom and the main DOM happens separately. The browser flattens them together before displaying it to the user. The feature, state & style of the Shadow DOM stays private and not affected by the main DOM. Hence it achieves the true encapsulation.
+
+-> ViewEncapsulation.None
+The ViewEncapsulation.None is used, when we do not want any encapsulation. When you use this, the styles defined in one component affects the elements of the other components.
+
+Transpiling:
+
+The concept of converting Typescript into JavaScript is called Transpiling. TypeScript is a primary language for Angular application development. It is a superset of JavaScript with design-time support for type safety and tooling. 
+Components and Services in angular
+
+Browsers can't execute TypeScript directly. Typescript must be "transpiled" into JavaScript using the tsc compiler, which requires some configuration.
+
+-> tsconfig.json—TypeScript compiler configuration.
+-> typings—TypesScript declaration files.
+
+What is AOT compilation? What are the advantages of AOT?
+
+Every Angular application consists of components and templates which the browser cannot understand. Therefore, all the Angular applications need to be compiled first before running inside the browser.
+
+Angular provides two types of compilation:
+1. JIT(Just-in-Time) compilation:
+
+In JIT compilation, the application compiles inside the browser during runtime.
+
+Development -> Production -> App Downloaded in Browser - > Angular Parses & Compile Templates (to JavaScript)
+
+2. AOT(Ahead-of-Time) compilation:
+
+An Angular application consists mainly of components and their HTML templates. Because the components and templates provided by Angular cannot be understood by the browser directly, Angular applications require a compilation process before they can run in a browser.
+
+The Angular ahead-of-time (AOT) compiler converts your Angular HTML and TypeScript code into efficient JavaScript code during the build phase before the browser downloads and runs that code. Compiling your application during the build process provides a faster rendering in the browser.
+
+code analysis -> code generation -> template type checking (optional phase)
+
+Faster rendering
+Detect template errors earlier
+
+Whereas in the AOT compilation, the application compiles during the build time.
+
+Advantages of using AOT compilation are:
+-> Since the application compiles before running inside the browser, the browser loads the executable code and renders the application immediately, which leads to faster rendering.
+-> In AOT compilation, the compiler sends the external HTML and CSS files along with the application, eliminating separate AJAX requests for those source files, which leads to fewer ajax requests.
+-> Developers can detect and handle errors during the building phase, which helps in minimizing errors.
+-> The AOT compiler adds HTML and templates into the JS files before they run inside the browser. Due to this, there are no extra HTML files to be read, which provide better security to the application.
+
+
+What are some of the advantages of Angular over other frameworks?
+
+Features that are provided out of the box - Angular provides a number of built-in features like,routing, state management, rxjs library and http servicesstraight out of the box. This means that one does not need tolook for the above stated features separately. They are allprovided with angular.
+
+Declarative UI - Angular uses HTML to render the UI of an application. HTML isa declarative language and is much easier to use than JavaScript.
+
+Long-term Google support - Google announced Long-term support for Angular. This means that Google plans to stick with Angular and further scale up its ecosystem.
+
+What is Directives???
+Directives are custom HTML attributes which tell angular to change the style or behavior of the Dom elements.
+
+Types:
+Components — directives with a template.
+Structural directives — change the DOM layout by adding and removing DOM elements.
+
+NgIf
+It is used to create or remove a part of the DOM tree depending on a condition.
+
+NgFor
+It is used to customize data display. It is mainly used for displaying a list of items using repetitive loops.
+
+NgSwitch
+It is like the JavaScript switch. It can display one element from among several possible elements, based on a switch condition. Angular puts only the selected element into the DOM.
+
+
+Attribute directives — change the appearance or behavior of an element, component, or another directive.
+
+NgClass—adds and removes a set of CSS classes.
+NgStyle—adds and removes a set of HTML styles.
+NgModel—adds two-way data binding to an HTML form element.
+
+AngularJs vs Angular
+Architecture
+AngularJS: MVC or  Model-View-Controller architecture facilitates the AngularJS framework, where the Model contains the business logic and Controllers processes information, lastly, View shows the information present in the Model.
+Angular: Angular replaces controllers with Components that are directives with a predefined template. 
+
+Language
+AngularJS: AngularJS uses JavaScript language, which is a dynamically typed language.
+Angular: Angular uses TypeScript language, a statically typed language, and a superset of JavaScript. Angular provides better performance while developing larger applications.
+
+Language
+AngularJS: Does not support mobile support.
+Angular: Supported by all popular mobile browsers. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

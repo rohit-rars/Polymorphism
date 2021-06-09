@@ -1,0 +1,326 @@
+In SQL, a view is a virtual table based on the result-set of an SQL statement. A view contains rows and columns, just like a real table. The fields in a view are fields from one or more real tables in the database.
+
+1. Views can hide complexity
+If you have a query that requires joining several tables, or has complex logic or calculations, you can code all that logic into a view, then select from the view just like you would a table.
+
+2. Views can be used as a security mechanism
+A view can select certain columns and/or rows from a table (or tables), and permissions set on the view instead of the underlying tables. This allows surfacing only the data that a user needs to see.
+
+
+Clustered Index:
+
+-> A clustered index is an index which defines the physical order in which table records are stored in a database. Since there can be only one way in which records are physically stored in a database table, there can be only one clustered index per table. By default a clustered index is created on a primary key column.
+
+-> The only time the data rows in a table are stored in sorted order is when the table contains a clustered index. When a table has a clustered index, the table is called a clustered table. If a table has no clustered index, its data rows are stored in an unordered structure called a heap.
+
+ALTER TABLE Patients
+DROP CONSTRAINT PK__Patients__3213E83F3DFAFAAD
+
+CREATE CLUSTERED INDEX IX_tblPatient_Age
+ON Patients(age ASC)
+
+INSERT INTO Patients
+
+VALUES
+(1, 'Sara', 'Female', 34),
+(2, 'Jon', 'Male', 20),
+(3, 'Mike', 'Male', 54),
+(4, 'Ana', 'Female', 10),
+(5, 'Nick', 'Female', 29)
+
+Select * from Patients
+
+4, 'Ana', 'Female', 10
+2, 'Jon', 'Male', 20
+5, 'Nick', 'Female', 29
+1, 'Sara', 'Female', 34
+3, 'Mike', 'Male', 54
+
+Nonclustered
+
+-> A non-clustered index is also used to speed up search operations. Unlike a clustered index, a non-clustered index doesn’t physically define the order in which records are inserted into a table. In fact, a non-clustered index is stored in a separate location from the data table. A non-clustered index is like a book index, which is located separately from the main contents of the book. Since non-clustered indexes are located in a separate location, there can be multiple non-clustered indexes per table
+
+-> The pointer from an index row in a nonclustered index to a data row is called a row locator. The structure of the row locator depends on whether the data pages are stored in a heap or a clustered table. For a heap, a row locator is a pointer to the row. For a clustered table, the row locator is the clustered index key.
+
+-> You can add nonkey columns to the leaf level of the nonclustered index to by-pass existing index key limits, and execute fully covered, indexed, queries. For more information, see Create Indexes with Included Columns. For details about index key limits see Maximum Capacity Specifications for SQL Server.
+
+The maximum number of nonclustered indexes that can be created per table is 999. 16 columns in the index key
+
+A Non-clustered index is built using the same 8K-page B-tree structure that is used to build a Clustered index, except that the data and the Non-clustered index are stored separately. A Non-clustered index is different from a Clustered index in that, the underlying table rows will not be stored and sorted based on the Non-clustered key, and the leaf level nodes of the Non-clustered index are made of index pages instead of data pages.
+
+When to Use Clustered or Non-Clustered Indexes
+Now that you know the differences between a clustered and a non-clustered index, let’s see the different scenarios for using each of them.
+
+1.   Number of Indexes
+This is pretty obvious. If you need to create multiple indexes on your database, go for non-clustered index since there can be only one clustered index.
+
+2.   SELECT Operations
+If you want to select only the index value that is used to create and index, non-clustered indexes are faster. For example, if you have created an index on the “name” column and you want to select only the name, non-clustered indexes will quickly return the name.
+
+However, if you want to select other column values such as age, gender using the name index, the SELECT operation will be slower since first the name will be searched from the index and then the reference to the actual table record will be used to search the age and gender.
+
+On the other hand, with clustered indexes since all the records are already sorted, the SELECT operation is faster if the data is being selected from columns other than the column with clustered index.
+
+3.   INSERT/UPDATE Operations
+The INSERT and UPDATE operations are faster with non-clustered indexes since the actual records are not required to be sorted when an INSERT or UPDATE operation is performed. Rather only the non-clustered index needs updating.
+
+4.   Disk Space
+Since, non-clustered indexes are stored at a separate location than the original table, non-clustered indexes consume additional disk space. If disk space is a problem, use a clustered index.
+
+5.   Final Verdict
+As a rule of thumb, every table should have at least one clustered index preferably on the column that is used for SELECTING records and contains unique values. The primary key column is an ideal candidate for a clustered index.
+
+On the other hand columns that are often involved in INSERT and UPDATE queries should have a non-clustered index assuming that disk space isn’t a concern.
+
+User Defined Data Type:
+
+SQL Server supports various data types for storing different kinds of data. These data types store characters, numeric, decimal, string, binary, CLR and Spatial data types. 
+
+The UDT is similar to an alias data type, and it uses the existing system data types in SQL Server or Azure SQL database. SQL Server uses the Microsoft.Net framework. Common language runtime to define and implement the user-defined types. Suppose your multiple tables use the email address column. The different developers might set a different value for Nvarchar() data type. In this case, you can define a user-defined type, and you can use these types like a regular data type. SQL Server supports two kinds of user-defined types.
+
+-> User-defined data type
+
+A user-defined data type uses the existing data types with a set of constraints or rules. To create a UDDT, right-click on the user-defined data type folder and New user-defined data type. On this page, you can see the following inputs.
+
+Schema: By default, it uses the dbo schema. We can use any existing schema here
+Name: Give a customized name for the data type. Here, we give it a name as [PhoneNumber]
+Data type: Select the existing system data type to map with the user-defined data type. You can select the appropriate data type from the drop-down
+Length: Specify the length in case of a variable data type
+Allow Nulls: Put a check if you want to allow the NULL values
+Storage: It shows the bytes it consumes
+
+OR
+
+CREATE TYPE [dbo].[PhoneNumber] FROM [nvarchar](20) NOT NULL
+
+CREATE TABLE [dbo].[SQLShackDemo](
+    [EmpID] [int] NULL,
+    [EmpName] [varchar](20) NULL,
+    [EmpContactNumber] [dbo].[PhoneNumber]
+) ON [PRIMARY]
+GO
+
+-> User-defined table type
+
+SQL Server allows a particular data type [table] to store a data set. In this data type, we specify the data types and their properties similar to a table.
+
+CREATE TYPE ProductTableType AS TABLE (
+    ProductName VARCHAR(50),
+    Cost INT
+);
+
+CREATE PROCEDURE GetProducts
+    @p ProductTableType READONLY
+as
+SELECT ProductName,COST
+    FROM @P
+    RETURN 0;
+GO
+
+Introduction to Schema
+A SQL database contains multiple objects such as tables, views, stored procedures, functions, indexes, triggers. We define SQL Schema as a logical collection of database objects. A user owns that owns the schema is known as schema owner.
+
+To create one using a script is as easy as (for example):
+
+CREATE SCHEMA [EnterSchemaNameHere] AUTHORIZATION [dbo]
+
+You cannot drop the following schemas:
+
+dbo
+guest
+sys
+INFORMATION_SCHEMA
+
+The sys and INFORMATION_SCHEMA schemas are reserved for system objects. You cannot create objects in these schemas and you cannot drop them.
+The dbo schema is the default schema for a newly created database. The dbo schema is owned by the dbo user account.
+
+SQL Constraints
+
+NOT NULL - Ensures that a column cannot have a NULL value
+UNIQUE - Ensures that all values in a column are different
+PRIMARY KEY - A combination of a NOT NULL and UNIQUE. Uniquely identifies each row in a table
+FOREIGN KEY - Prevents actions that would destroy links between tables
+CHECK - Ensures that the values in a column satisfies a specific condition
+DEFAULT - Sets a default value for a column if no value is specified
+CREATE INDEX - Used to create and retrieve data from the database very quickly
+
+
+nth highest Salary:
+WITH All_Records AS
+(
+	Select ID, EmpName, Salary, ROW_NUM = ROW_NUMBER() over (order by Salary DESC) from TestDuplicates
+)
+SELECT ID, EmpName, Salary FROM All_Records
+WHERE ROW_NUM = 2
+
+SELECT 
+sup.employee_id,
+    sup.first_name,
+    sup.last_name,
+FROM employee sub 
+JOIN employee sup 
+ON sub.manager_id = sup.employee_id
+
+CTE: A Common Table Expression, also called as CTE in short form, is a temporary named result set that you can reference within a SELECT, INSERT, UPDATE, or DELETE statement. The CTE can also be used in a View.
+
+
+Temp Tables are physically created in the tempdb database. These tables act as the normal table and also can have constraints, an index like normal tables.
+
+#localTempTable - 
+and 
+##GlobalTempTable
+
+CTE is a named temporary result set which is used to manipulate the complex sub-queries data. This exists for the scope of a statement. This is created in memory rather than the Tempdb database. You cannot create an index on CTE.
+
+Table Variable acts like a variable and exists for a particular batch of query execution. It gets dropped once it comes out of a batch. This is also created in the tempdb database but not the memory.
+
+
+@@Identity: It will return the last identity value generated in a connection, regardless of the table in which it was generated or the scope of the Insert statement that generated the identity.
+
+Scope_Identity(): It will return the last identity value generated in a connection, within the scope of the Insert query.
+
+Ident_Current('Table_Name'): It will return the last identity value generated on the table specified, irrespective of the connection or scope of the insert statement.
+
+Triggers:
+
+A SQL trigger is a database object which fires when an event occurs in a database. We can execute a SQL query that will "do something" in a database when a change occurs on a database table such as a record is inserted or updated or deleted. For example, a trigger can be set on a record insert in a database table.
+
+Use of Triggers:
+1. Generating some derived column values automatically.
+2. Event logging and storing information on table access.
+3. Auditing
+
+AFTER | FOR Triggers:
+FOR or AFTER specifies that the DML trigger fires only when all operations specified in the triggering SQL statement have launched successfully. All referential cascade actions and constraint checks must also succeed before this trigger fires.
+
+You can't define AFTER triggers on views.
+
+Instead Of Triggers:
+Specifies that the DML trigger launches instead of the triggering SQL statement, thus, overriding the actions of the triggering statements. You can't specify INSTEAD OF for DDL or logon triggers.
+
+
+-> DDL Triggers
+ 
+The DDL triggers are fired in response to DDL (Data Definition Language) command events that start with Create, Alter and Drop, such as Create_table, Create_view, drop_table, Drop_view and Alter_table.
+
+create trigger saftey  
+on database  
+for  
+create_table,alter_table,drop_table  
+as  
+print'you can not create ,drop and alter table in this database'  
+rollback;
+
+-> DML Triggers
+ 
+The DML triggeres are fired in response to DML (Data Manipulation Language) command events that start with with Insert, Update and Delete. Like insert_table, Update_view and Delete_table.
+
+create trigger deep  
+on emp  
+for  
+insert,update,delete  
+as  
+print'you can not insert,update and delete this table i'  
+rollback;
+
+------
+
+CREATE TRIGGER instoftr  
+ON v11  
+INSTEAD OF INSERT  
+AS  
+BEGIN  
+INSERT INTO emp  
+SELECT I.id, I.names  
+FROM INSERTED I  
+   
+INSERT INTO emp1values  
+SELECT I.id1, I.name1  
+FROM INSERTED I  
+END   
+
+
+DELETE is a DML(Data Manipulation Language) command and is used when we specify the row(tuple) that we want to remove or delete from the table or relation. The DELETE command can contain a WHERE clause. If WHERE clause is used with DELETE command then it remove or delete only those rows(tuple) that satisfy the condition otherwise by default it removes all the tuples(rows) from the table. 
+
+TRUNCATE is a DDL(Data Definition Language) command and is used to delete all the rows or tuples from a table. Unlike the DELETE command, TRUNCATE command does not contain a WHERE clause. In the TRUNCATE command, the transaction log for each deleted data page is recorded. Unlike the DELETE command, the TRUNCATE command is fast. Like DELETE, we can rollback the data even after using the TRUNCATE command. 
+
+Less transaction log space is used.
+
+The DELETE statement removes rows one at a time and records an entry in the transaction log for each deleted row. TRUNCATE TABLE removes the data by deallocating the data pages used to store the table data and records only the page deallocations in the transaction log.
+
+TRUNCATE statement removes the data by de-allocating the data pages in the table data. This means that TRUNCATE is similar to drop and re-create the table. Also, it records only the page de-allocations in the transaction log.
+
+
+Functions can be called from Procedure whereas Procedures cannot be called from a Function.
+
+Function must return a value.
+Stored Procedure may or not return values.
+
+Will allow only Select statements, it will not allow us to use DML statements.
+Can have select statements as well as DML statements such as insert, update, delete and so on
+
+It will allow only input parameters, doesn't support output parameters.
+It can have both input and output parameters.
+
+It will not allow us to use try-catch blocks.
+For exception handling we can use try catch blocks.
+
+SQL Transactions
+Transactions group a set of tasks into a single execution unit. Each transaction begins with a specific task and ends when all the tasks in the group successfully complete. If any of the tasks fail, the transaction fails. Therefore, a transaction has only two results: success or failure. 
+
+Properties of Transactions
+Transactions have the following four standard properties, usually referred to by the acronym ACID.
+
+Atomicity − ensures that all operations within the work unit are completed successfully. Otherwise, the transaction is aborted at the point of failure and all the previous operations are rolled back to their former state.
+
+Consistency − ensures that the database properly changes states upon a successfully committed transaction.
+
+Isolation − enables transactions to operate independently of and transparent to each other.
+
+Durability − ensures that the result or effect of a committed transaction persists in case of a system failure.
+
+Transaction Control
+The following commands are used to control transactions.
+
+COMMIT − to save the changes.
+
+ROLLBACK − to roll back the changes.
+
+SAVEPOINT − creates points within the groups of transactions in which to ROLLBACK.
+SAVEPOINT SAVEPOINT_NAME;
+ROLLBACK TO SAVEPOINT_NAME;
+
+SET TRANSACTION − Places a name on a transaction.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

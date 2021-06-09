@@ -1,0 +1,146 @@
+Entity Framework is an open-source ORM (object-relational mapping) framework for .NET applications supported by Microsoft. It enables developers to work with data using objects of domain specific classes without focusing on the underlying database tables and columns where this data is stored. With the Entity Framework, developers can work at a higher level of abstraction when they deal with data, and can create and maintain data-oriented applications with less code compared with traditional applications.
+
+Official Definition: “Entity Framework is an object-relational mapper (O/RM) that enables .NET developers to work with a database using .NET objects. It eliminates the need for most of the data-access code that developers usually need to write.”
+
+.edmx is basically an XML file which is generated when we added Entity Framework model. It is Entity Data Model Xml which contains designer (Model) and code file(.cs).
+
+Eager Loading:
+
+Eager loading is the process whereby a query for one type of entity also loads related entities as part of the query, so that we don't need to execute a separate query for related entities. Eager loading is achieved using the Include() method.
+
+In the following example, it gets all the students from the database along with its standards using the Include() method.
+
+LINQ Query Syntax:
+using (var context = new SchoolDBEntities())
+{
+    var stud1 = (from s in context.Students.Include("Standard")
+                where s.StudentName == "Bill"
+                select s).FirstOrDefault<Student>();
+}
+
+LINQ Method Syntax:
+using (var ctx = new SchoolDBEntities())
+{
+    var stud1 = ctx.Students
+                   .Include("Standard")
+                   .Where(s => s.StudentName == "Bill")
+                   .FirstOrDefault<Student>();
+}
+
+Lazy Loading:
+Lazy loading is delaying the loading of related data, until you specifically request for it. It is the opposite of eager loading.
+
+using (var ctx = new SchoolDBEntities())
+{
+    //Loading students only
+    IList<Student> studList = ctx.Students.ToList<Student>();
+
+    Student std = studList[0];
+
+    //Loads Student address for particular Student only (seperate SQL query)
+    StudentAddress add = std.StudentAddress;
+}
+
+ules for lazy loading:
+context.Configuration.ProxyCreationEnabled should be true.
+context.Configuration.LazyLoadingEnabled should be true.
+Navigation property should be defined as public, virtual. Context will NOT do lazy loading if the property is not defined as virtual.
+
+We can disable lazy loading for a particular entity or a context. To turn off lazy loading for a particular property, do not make it virtual. To turn off lazy loading for all entities in the context, set its configuration property to false.
+
+public partial class SchoolDBEntities : DbContext
+{
+    public SchoolDBEntities(): base("name=SchoolDBEntities")
+    {
+        this.Configuration.LazyLoadingEnabled = false;
+    }
+
+    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    {
+    }
+}
+
+
+Code First Approach:
+The Code First Approach creates a database for us based on our classes. In the Code-First approach, you focus on the domain of your application and start creating classes for your domain entity rather than design your database first and then create the classes which match your database design.
+
+Step 1: Adding NuGet Package (if not available in references)
+Step 2: Adding Classes -> Right-click on the Models Folder to add a new class.
+Step 3: Adding DbContext -> Right-click on the Models Folder to add a new class file named "StudentContext.cs" and enter the following code:
+
+using System;  
+using System.Collections.Generic;  
+using System.Data.Entity;  
+using System.Linq;  
+using System.Web;  
+namespace Code_First_Approach_in_Entity_Framework.Models  
+{  
+    public class StudentContext : DbContext  
+    {  
+		public StudentContext() : base("MyContextDB") {} // with DbName
+        public DbSet<Student> Students { get; set; }  
+    }  
+}  
+
+this DbContext will do many things for us such as it will create databases and tables. You can check your newly added database file
+
+
+Entity Framework Features:
+Cross-platform: EF Core is a cross-platform framework which can run on Windows, Linux and Mac.
+
+Modelling: EF (Entity Framework) creates an EDM (Entity Data Model) based on POCO (Plain Old CLR Object) entities with get/set properties of different data types. It uses this model when querying or saving entity data to the underlying database.
+
+Querying: EF allows us to use LINQ queries (C#/VB.NET) to retrieve data from the underlying database. The database provider will translate this LINQ queries to the database-specific query language (e.g. SQL for a relational database). EF also allows us to execute raw SQL queries directly to the database.
+
+Change Tracking: EF keeps track of changes occurred to instances of your entities (Property values) which need to be submitted to the database.
+
+Saving: EF executes INSERT, UPDATE, and DELETE commands to the database based on the changes occurred to your entities when you call the SaveChanges() method. EF also provides the asynchronous SaveChangesAsync() method.
+
+Concurrency: EF uses Optimistic Concurrency by default to protect overwriting changes made by another user since data was fetched from the database.
+
+Transactions: EF performs automatic transaction management while querying or saving data. It also provides options to customize transaction management.
+
+Caching: EF includes first level of caching out of the box. So, repeated querying will return data from the cache instead of hitting the database.
+
+Built-in Conventions: EF follows conventions over the configuration programming pattern, and includes a set of default rules which automatically configure the EF model.
+
+Configurations: EF allows us to configure the EF model by using data annotation attributes or Fluent API to override default conventions.
+
+Migrations: EF provides a set of migration commands that can be executed on the NuGet Package Manager Console or the Command Line Interface to create or manage underlying database Schema.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

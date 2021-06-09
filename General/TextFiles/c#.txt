@@ -1,0 +1,119 @@
+Generic means the general form, not specific. In C#, generic means not specific to a particular data type.
+
+Boxing and unboxing in C# allows developers to convert .NET data types from value type to reference type and vice versa. Converting a value type to a reference type is called called boxing in C# and converting a reference type to a value type is called unboxing in C#. 
+
+Volatile Keyword:
+The purpose of the volatile keyword is to tell the compiler that the variable you are marking as volatile may be accessed by multiple threads. There are certain optimizations that the csharp compiler makes when it compiles our code and unless the variable is marked as volatile, the compiler will make optimizations assuming that the variable will only be accessed by one thread at a time.
+
+In keyword:
+The in keyword causes arguments to be passed by reference but ensures the argument is not modified. It makes the formal parameter an alias for the argument, which must be a variable. In other words, any operation on the parameter is made on the argument. It is like the ref or out keywords, except that in arguments cannot be modified by the called method. Whereas ref arguments may be modified, out arguments must be modified by the called method, and those modifications are observable in the calling context. In is actually a ref readonly
+
+.Net Framework is a platform that provides tools and technologies to develop Windows, Web and Enterprise applications. It mainly contains two components,
+
+1:Common Language Runtime (CLR)
+
+.Net Framework provides runtime environment called Common Language Runtime (CLR).It provides an environment to run all the .Net Programs. The code which runs under the CLR is called as Managed Code. Programmers need not to worry on managing the memory if the programs are running under the CLR as it provides memory management and thread management.
+
+Programmatically, when our program needs memory, CLR allocates the memory for scope and de-allocates the memory if the scope is completed.
+
+Language Compilers (e.g. C#, VB.Net, J#) will convert the Code/Program to Microsoft Intermediate Language (MSIL) intern this will be converted to Native Code by CLR. 
+
+using System;
+using System.Runtime.InteropServices;
+ 
+class MainClass {
+   [DllImport("Dll1.dll")]
+   static extern void Message(string msg);
+ 
+   public static void Main() {
+      Message("Hello world");
+   }
+};
+
+The first thing you should understanind is why you would want to use unmanaged code. There are possibly two reasons to call unmanaged code:
+
+You want to reuse your code which is already written in an unmanaged environment e.g. VC 6.0
+You want to perform some low level work. ( i.e. need in line assembly in your program)
+
+2:.Net Framework Class Library.
+
+This is also called as Base Class Library and it is common for all types of applications i.e. the way you access the Library Classes and Methods in VB.NET will be the same in C#, and it is common for all other languages in .NET.
+
+Common Type System (CTS)
+
+It describes set of data types that can be used in different .Net languages in common. (i.e), CTS ensures that objects written in different .Net languages can interact with each other.
+
+For Communicating between programs written in any .NET complaint language, the types have to be compatible on the basic level.
+
+The common type system supports two general categories of types: 
+
+Value types:
+
+Value types directly contain their data, and instances of value types are either allocated on the stack or allocated inline in a structure. Value types can be built-in (implemented by the runtime), user-defined, or enumerations.
+
+Reference types:
+
+Reference types store a reference to the value's memory address, and are allocated on the heap. Reference types can be self-describing types, pointer types, or interface types. The type of a reference type can be determined from values of self-describing types. Self-describing types are further split into arrays and class types. The class types are user-defined classes, boxed value types, and delegates.
+
+
+Common Language Specification (CLS)
+
+It is a sub set of CTS and it specifies a set of rules that needs to be adhered or satisfied by all language compilers targeting CLR. It helps in cross language inheritance and cross language debugging.
+
+String Vs String Builder
+
+String is immutable, Immutable means if you create string object then you cannot modify it and It always create new object of string type in memory.
+
+StringBuilder is mutable, means if create string builder object then you can perform any operation like insert, replace or append without creating new instance for every time.it will update string at one place in memory doesnt create new space in memory.
+
+Need of the StringBuilder: As stated above that the String class objects are immutable which means that if the user will modify any string object it will result into the creation of a new string object. It makes the use of string costly. So when the user needs the repetitive operations on the string then the need of StringBuilder come into existence. It provides the optimized way to deal with the repetitive and multiple string manipulation operations.
+
+Namespace:
+1) it is a Collection of names wherein each name is Unique.
+2) They form the logical boundary for a Group of classes.
+3) Namespace must be specified in Project-Properties.
+
+Assembly:
+1) It is an Output Unit.
+2) It is a unit of Deployment & a unit of versioning.
+3) Assemblies contain MSIL code.
+4) Assemblies are Self-Describing. [e.g. metadata,manifest]
+5)An assembly is the primary building block of a .NET Framework application.
+6) It is a collection of functionality that is built, versioned, and deployed as a single implementation unit (as one or more files).
+7) All managed types and resources are marked either as accessible only within their implementation unit, or by code outside that unit.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

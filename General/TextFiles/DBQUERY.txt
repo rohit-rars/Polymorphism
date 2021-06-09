@@ -1,0 +1,20 @@
+SELECT t.salary 
+FROM (
+      SELECT salary,
+          DENSE_RANK() OVER (ORDER BY SALARY DESC) AS DENSE_RANK 
+      FROM geosalary
+      ) as t  --- this alias is missing
+WHERE t.dense_rank = 2
+
+
+SELECT e1.Name EmployeeName, e2.name AS ManagerName
+FROM Employee e1
+INNER JOIN Employee e2
+ON e1.ManagerID = e2.EmployeeID
+GO
+
+Return the Duplicate Record:
+SELECT ID,EmpName, Salary, COUNT(1) AS CNT
+FROM [TestDuplicates]
+GROUP BY ID,EmpName, Salary
+HAVING COUNT(1) > 1;

@@ -1,0 +1,76 @@
+Restful services or Web APIs are stateless by default. Every request is a new request to the server. This makes Web APIs easily scalable. But what if we want to provide some authorization on our Web APIs? We can issue a token to the requester and then the requester can present that token in future requests to authorize itself.
+
+Now we have two options,
+1. Create a random but unique token and keep track of that token on the server side. This is how Server Side Session works. We have "Session Id", a unique & random string.
+2. Create a token which contains everything in it and then you don't track anything on server.
+
+The first option is not very scalable but the second option is. Now if our token is going to contain the data in itself, what issues do we see?
+
+1. What will be format of token & how to represent data in it?
+2. How to secure the content of token so the end user can't read it?
+3. How to detect if token is tempered by end user?
+
+
+Json Web Tokens (check https://jwt.io/ for example)
+-> JWT token is a string and has three parts separated by dot (.) a) Header b) Payload c) Signature 
+-> Header & Payload are JSON objects
+-> Header contains algorithm & type of token which is jwt
+-> Payload contains claims (key/value pairs) + expiration date + aud/issuer etc. 
+-> Signature is HASH value computed using Base64(Header) +"." + Base64(Payload).  This information is passed to an algorithm with a secret key.
+-> Token structure is base64(header) + "." + base64(payload) + "." + hash
+
+This is a quick workflow using JWT,
+-> Client sends a request to server for token
+-> Server generates a JWT (which contains a hash). Hash is generated using a secret key.
+-> Client receives the token and stores it somewhere locally.
+-> Client sends the token in future requests.
+-> Server gets the token from request header, computes Hash again by using a) Header from token b) payload from token c) secret key which server already has.
+-> If ("newly computed hash" = "hash came in token"), token is valid otherwise it is tempered or not valid. 
+
+
+<script>  
+         $(document).ready(function () {  
+             $("#Save").click(function () {  
+                 var person = new Object();  
+                 person.name = $('#name').val();  
+                 person.surname = $('#surname').val();  
+                 $.ajax({  
+                     url: 'http://localhost:3413/api/person',  
+                     type: 'POST', 
+					 headers: { Authorization: $`Bearer ${localStorage.getItem("token")}` },					 
+                     dataType: 'json',  
+                     data: person,  
+                     success: function (data, textStatus, xhr) {  
+                         console.log(data);  
+                     },  
+                     error: function (xhr, textStatus, errorThrown) {  
+                         console.log('Error in Operation');  
+                     }  
+                 });  
+             });  
+         });  
+    </script>  
+	
+	
+	function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+function eraseCookie(name) {   
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}

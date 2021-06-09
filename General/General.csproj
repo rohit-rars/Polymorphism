@@ -49,5 +49,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="TextFiles\Angular.txt" />
+    <Content Include="TextFiles\AspNET.txt" />
+    <Content Include="TextFiles\c#.txt" />
+    <Content Include="TextFiles\Database.txt" />
+    <Content Include="TextFiles\DBQUERY.txt" />
+    <Content Include="TextFiles\EF.txt" />
+    <Content Include="TextFiles\MVC.txt" />
+    <Content Include="TextFiles\Repositry.txt" />
+    <Content Include="TextFiles\WebAPI_Auth.txt" />
+    <Content Include="TextFiles\WebService.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
