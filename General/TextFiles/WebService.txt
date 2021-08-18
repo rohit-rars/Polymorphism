@@ -12,6 +12,7 @@ DELETE − Used to remove a resource.
 
 PUT − Used to update a existing resource or create a new resource.
 
+<<<<<<< HEAD
 Return Types of Web API Methods:
 Void: It's not necessary that all action methods must return something. It can have void return type.
 
@@ -31,6 +32,8 @@ HttpResponseMessage: Web API controller always returns an object of HttpResponse
 
 Create Custom Result Type: You can create your own custom class as a result type that implements IHttpActionResult interface.
 
+=======
+>>>>>>> b54ec0d96289ed2060b57a54366f9a7f27b097de
 
 Web services based on REST Architecture are known as RESTful web services. These webservices uses HTTP methods to implement the concept of REST architecture. A RESTful web service usually defines a URI, Uniform Resource Identifier a service.
 

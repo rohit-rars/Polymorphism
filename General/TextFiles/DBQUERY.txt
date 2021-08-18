@@ -17,6 +17,7 @@ Return the Duplicate Record:
 SELECT ID,EmpName, Salary, COUNT(1) AS CNT
 FROM [TestDuplicates]
 GROUP BY ID,EmpName, Salary
+<<<<<<< HEAD
 HAVING COUNT(1) > 1;
 
 
@@ -29,3 +30,6 @@ FROM dbo.tblEmployee
 --Now Delete Duplicate Records
 DELETE FROM a
 WHERE duplicateRecCount > 1
+=======
+HAVING COUNT(1) > 1;
+>>>>>>> b54ec0d96289ed2060b57a54366f9a7f27b097de

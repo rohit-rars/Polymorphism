@@ -52,18 +52,26 @@
   <ItemGroup>
     <Content Include="TextFiles\Angular.txt" />
     <Content Include="TextFiles\AspNET.txt" />
+<<<<<<< HEAD
     <Content Include="TextFiles\AssemblyVsNamspace.txt" />
     <Content Include="TextFiles\Bank_Domain.txt" />
     <Content Include="TextFiles\c#.txt" />
     <Content Include="TextFiles\Core.txt" />
+=======
+    <Content Include="TextFiles\c#.txt" />
+>>>>>>> b54ec0d96289ed2060b57a54366f9a7f27b097de
     <Content Include="TextFiles\Database.txt" />
     <Content Include="TextFiles\DBQUERY.txt" />
     <Content Include="TextFiles\EF.txt" />
     <Content Include="TextFiles\MVC.txt" />
+<<<<<<< HEAD
     <Content Include="TextFiles\ORACLE_Details.txt" />
     <Content Include="TextFiles\Oracle_Job.txt" />
     <Content Include="TextFiles\Repositry.txt" />
     <Content Include="TextFiles\Sorting_Searching.txt" />
+=======
+    <Content Include="TextFiles\Repositry.txt" />
+>>>>>>> b54ec0d96289ed2060b57a54366f9a7f27b097de
     <Content Include="TextFiles\WebAPI_Auth.txt" />
     <Content Include="TextFiles\WebService.txt" />
   </ItemGroup>
