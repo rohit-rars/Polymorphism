@@ -17,6 +17,8 @@ namespace Delegate
      * implement event handling, and they are declared using the “delegate” keyword.
      * You can declare a delegate that can appear on its own or even nested inside a class.
      * 
+     * Func, Action and Predicate are define in C# 3.0 and these are generic inbuilt delegates.
+     * 
      * Type safety means that the compiler will validate types while compiling, and throw an error 
      * if you try to assign the wrong type to a variable.
      * 
@@ -25,13 +27,64 @@ namespace Delegate
      * int foo = "bar"; //Error
      
      */
+
     class Program
     {
+        private static int AddNumbers(int param1, int param2)
+        {
+            return param1 + param2;
+        }
+
+        private static int resultAction;
+        private static void AddNumbersAction(int param1, int param2)
+        {
+            resultAction = param1 + param2;
+        }
+
+        private static bool IsApple(string modelName)
+        {
+            if (modelName == "I Phone X")
+                return true;
+            else
+                return false;
+        }
+
+
         //Declaration
         public delegate void addnum(int a, int b);
         public delegate void subnum(int a, int b);
         static void Main(string[] args)
         {
+            //Func
+            /*
+             * Func is generic delegate present in System namespace. It takes one or more input parameters and returns one out parameter. 
+             * The last parameter is considered as a return value.
+             * 
+             * Func delegate type can include 0 to 16 input parameters of different types. It must have one return type. So return type 
+             * is mandatory but input parameter is not.
+             */
+            Func<int, int, int> Addition = AddNumbers;
+            int result = Addition(10, 20);
+
+            /*
+             * Action Delegate
+             * Action is a generic delegate present in System namespace. It takes one or more input parameters and returns nothing.
+             * 
+             * So it does not return any value.
+             */
+            Action<int, int> AdditionAction = AddNumbersAction;
+            AdditionAction(10, 20);
+            Console.WriteLine(resultAction);
+
+            /*
+             * Predicate delegate
+             * Syntax difference between predicate & func is that here in predicate, you don't specify a return type because it is always a bool.
+             */
+            Predicate<string> CheckIfApple = IsApple;
+            bool resultPredicate = IsApple("I Phone X");
+            if (resultPredicate)
+                Console.WriteLine("It's an IPhone");
+
             //Single Cast
             DelegateTest del = new DelegateTest();
 
@@ -105,7 +158,6 @@ namespace Delegate
             return order.Pizzas.Sum(p => p.Crust == Crust.Stuffed ? 5m : 0m);
         }
     }
-
 
     class PizzaOrderingSystemMethod
     {

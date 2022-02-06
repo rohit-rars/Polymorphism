@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C9C5958D-6E28-4444-A8D0-3A0F6A22EA9C}</ProjectGuid>
+    <ProjectGuid>{6CCB10B0-1386-48F0-99AA-C99F0BF42D64}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>General</RootNamespace>
-    <AssemblyName>General</AssemblyName>
+    <RootNamespace>ElevatorSystemDesign</RootNamespace>
+    <AssemblyName>ElevatorSystemDesign</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -35,6 +35,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,6 +51,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

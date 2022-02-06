@@ -66,13 +66,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncAwait", "AsyncAwait\As
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oracle", "Oracle\Oracle.csproj", "{4B0628A4-20B3-45E6-94F3-A3B4CBFAA7B6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OralceCore", "OralceCore\OralceCore.csproj", "{23C8790B-B8D1-404E-8E31-660259EC3BB9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkDatabaseFirst", "EntityFrameworkDatabaseFirst\EntityFrameworkDatabaseFirst.csproj", "{FEE96930-7A97-4C39-8692-2635F444F3B4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPL", "TPL\TPL.csproj", "{84DD691D-B9E0-405C-BA0A-9E2EDE4E4392}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreWebAPI", "CoreWebAPI\CoreWebAPI.csproj", "{532B00A2-E417-4DF9-B35B-30A9830A99F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Array", "Array\Array.csproj", "{032F2115-7DD9-4B07-AE3B-2015F5E8673C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElevatorSystemDesign", "ElevatorSystemDesign\ElevatorSystemDesign.csproj", "{6CCB10B0-1386-48F0-99AA-C99F0BF42D64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolidPrincipals", "SolidPrincipals\SolidPrincipals.csproj", "{07EE3BCA-6999-45A2-B31D-9D863E41DA1F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -200,10 +202,6 @@ Global
 		{4B0628A4-20B3-45E6-94F3-A3B4CBFAA7B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B0628A4-20B3-45E6-94F3-A3B4CBFAA7B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B0628A4-20B3-45E6-94F3-A3B4CBFAA7B6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{23C8790B-B8D1-404E-8E31-660259EC3BB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{23C8790B-B8D1-404E-8E31-660259EC3BB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{23C8790B-B8D1-404E-8E31-660259EC3BB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{23C8790B-B8D1-404E-8E31-660259EC3BB9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FEE96930-7A97-4C39-8692-2635F444F3B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FEE96930-7A97-4C39-8692-2635F444F3B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEE96930-7A97-4C39-8692-2635F444F3B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -212,10 +210,18 @@ Global
 		{84DD691D-B9E0-405C-BA0A-9E2EDE4E4392}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84DD691D-B9E0-405C-BA0A-9E2EDE4E4392}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84DD691D-B9E0-405C-BA0A-9E2EDE4E4392}.Release|Any CPU.Build.0 = Release|Any CPU
-		{532B00A2-E417-4DF9-B35B-30A9830A99F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{532B00A2-E417-4DF9-B35B-30A9830A99F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{532B00A2-E417-4DF9-B35B-30A9830A99F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{532B00A2-E417-4DF9-B35B-30A9830A99F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{032F2115-7DD9-4B07-AE3B-2015F5E8673C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{032F2115-7DD9-4B07-AE3B-2015F5E8673C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{032F2115-7DD9-4B07-AE3B-2015F5E8673C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{032F2115-7DD9-4B07-AE3B-2015F5E8673C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CCB10B0-1386-48F0-99AA-C99F0BF42D64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CCB10B0-1386-48F0-99AA-C99F0BF42D64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CCB10B0-1386-48F0-99AA-C99F0BF42D64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CCB10B0-1386-48F0-99AA-C99F0BF42D64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07EE3BCA-6999-45A2-B31D-9D863E41DA1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07EE3BCA-6999-45A2-B31D-9D863E41DA1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07EE3BCA-6999-45A2-B31D-9D863E41DA1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07EE3BCA-6999-45A2-B31D-9D863E41DA1F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -76,6 +76,7 @@ namespace GarbageCollection
 
         class mycustomclass : IDisposable
         {
+            private static readonly object lockObject = new object();
             private bool disposed = false;
             public void Dispose()
             {

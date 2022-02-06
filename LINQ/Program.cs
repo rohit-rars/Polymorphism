@@ -45,6 +45,9 @@ namespace LINQ
                  new Employee {ID=106,   Name="Kishor"    , Salary=6000,DEPT_ID=103},
             };
 
+            List<string> test = new List<string>();
+            test.Where(x => x.Contains("Manish"));
+
             List<Department> departments = new List<Department>()
             {
                  new Department {DEPT_ID=101,   DEPT_Name="HR        "   },

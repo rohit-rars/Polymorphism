@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C9C5958D-6E28-4444-A8D0-3A0F6A22EA9C}</ProjectGuid>
+    <ProjectGuid>{032F2115-7DD9-4B07-AE3B-2015F5E8673C}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>General</RootNamespace>
-    <AssemblyName>General</AssemblyName>
+    <RootNamespace>Array</RootNamespace>
+    <AssemblyName>Array</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -49,6 +49,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

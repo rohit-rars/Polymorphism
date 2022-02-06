@@ -19,6 +19,8 @@ namespace Singleton
         
         A public static means of getting the reference to the single created instance, creating one if necessary.
 
+        The class should be declared as sealed which will ensure that it cannot be inherited.
+
         Use of Singleton Design Patteren:
 
         Facades: You can also create Database connections as Singleton which can improve the 

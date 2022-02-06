@@ -11,6 +11,12 @@ namespace AbstractAndInterface
      * class should be public , non-static , and have the same name and signature as the
      * interface member. 
      * 
+     * The "diamond problem" is an ambiguity that arises when two classes B and C inherit from A, 
+     * and class D inherits from both B and C. If there is a method in A that B and C have overridden, 
+     * and D does not override it, then which class of the method does D inherit: that of B, or that 
+     * of C? So this is an ambiguity problem in multiple inheritances in c#. So that c# does not support 
+     * multiple inheritances. It also called an ambiguity problem in c#.
+     * 
      * C# does not support multiple inheritance , because they reasoned that adding multiple 
      * inheritance added too much complexity to C# while providing too little benefit. In C#, 
      * the classes are only allowed to inherit from a single parent class, which is called

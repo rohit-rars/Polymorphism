@@ -10,6 +10,40 @@ namespace General
     {
         static void Main(string[] args)
         {
+
+            // Declaring an integer array of size 11.
+            int[] arr1 = { 1, 2, 99, 9, 8,
+                    7, 6, 0, 5, 4, 3 };
+
+            // Printing the original Array.
+            Console.WriteLine("Original array: " +
+                               String.Join(", ", arr1));
+
+            // Sorting the array using a single loop
+            arr1 = sortArrays(arr1);
+
+            // Printing the sorted array.
+            Console.WriteLine("Sorted array: " +
+                               String.Join(", ", arr1));
+
+            // Declaring a String
+            String geeks = "GEEKSFORGEEKS";
+
+            // Declaring a character array
+            // to store characters of geeks in it.
+            char[] arr2 = geeks.ToCharArray();
+
+            // Printing the original Array.
+            Console.WriteLine("Original array: [" +
+                               String.Join(", ", arr2) + "]");
+
+            // Sorting the array using a single loop
+            arr2 = sortStringArrays(arr2);
+
+            // Printing the sorted array.
+            Console.WriteLine("Sorted array: [" +
+                               String.Join(", ", arr2) + "]");
+
             string tempString = "rohit arora";
             while(tempString.Length > 0)
             {
@@ -122,6 +156,65 @@ namespace General
             Console.ReadKey();
         }
 
+        // Function for Sorting the array
+        // using a single loop
+        public static int[] sortArrays(int[] arr)
+        {
+
+            // Finding the length of array 'arr'
+            int length = arr.Length;
+
+            // Sorting using a single loop
+            for (int j = 0; j < length - 1; j++)
+            {
+
+                // Checking the condition for two
+                // simultaneous elements of the array
+                if (arr[j] > arr[j + 1])
+                {
+
+                    // Swapping the elements.
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+
+                    // updating the value of j = -1
+                    // so after getting updated for j++
+                    // in the loop it becomes 0 and
+                    // the loop begins from the start.
+                    j = -1;
+                }
+            }
+            return arr;
+        }
+
+        public static char[] sortStringArrays(char[] arr)
+        {
+
+            // Finding the length of array 'arr'
+            int length = arr.Length;
+
+            // Sorting using a single loop
+            for (int j = 0; j < arr.Length - 1; j++)
+            {
+
+                // Type Conversion of char to int.
+                int d1 = arr[j];
+                int d2 = arr[j + 1];
+
+                // Comparing the ascii code.
+                if (d1 > d2)
+                {
+
+                    // Swapping of the characters
+                    char temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    j = -1;
+                }
+            }
+            return arr;
+        }
 
         public static int BinarySearchIterative(int[] inputArray, int key)
         {
