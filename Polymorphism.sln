@@ -76,6 +76,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElevatorSystemDesign", "Ele
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolidPrincipals", "SolidPrincipals\SolidPrincipals.csproj", "{07EE3BCA-6999-45A2-B31D-9D863E41DA1F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Liskov", "Liskov\Liskov.csproj", "{0120302A-138D-48EE-A3C6-7AC3D1DA26AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -222,6 +224,10 @@ Global
 		{07EE3BCA-6999-45A2-B31D-9D863E41DA1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07EE3BCA-6999-45A2-B31D-9D863E41DA1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07EE3BCA-6999-45A2-B31D-9D863E41DA1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0120302A-138D-48EE-A3C6-7AC3D1DA26AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0120302A-138D-48EE-A3C6-7AC3D1DA26AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0120302A-138D-48EE-A3C6-7AC3D1DA26AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0120302A-138D-48EE-A3C6-7AC3D1DA26AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

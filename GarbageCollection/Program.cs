@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,13 @@ namespace GarbageCollection
      * The process of releasing memory is called garbage collection. It releases only objects that are no longer being used in the
      * application.
      * 
+     * If an object is greater than or equal to 85,000 bytes in size, it's considered a large object. This number was determined by 
+     * performance tuning. When an object allocation request is for 85,000 or more bytes, the runtime allocates it on the 
+     * large object heap.
+     * 
      * Basically there are 3 generation of garbage collector in c# 
+     * ---> Garabage collector works mark sweep and compact algorithm <---
+     * 
      * 1: Generation 0 All the short-lived objects such as temporary variables are contained in the generation 0 of the heap memory. 
      * All the newly allocated objects are also generation 0 objects implicitly unless they are large objects. In general, the 
      * frequency of garbage collection is the highest in generation 0.
@@ -44,6 +51,8 @@ namespace GarbageCollection
      * 
      * we implement Idisposable interface to keep the control of garage collection. By implementing Dispose method we can
      * can free the memory whenever we want to. can be used to Clean Managed and Unmanaged Resoruces.
+     * 
+     * 
      */
     class Program
     {

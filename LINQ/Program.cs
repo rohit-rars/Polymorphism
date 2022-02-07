@@ -47,6 +47,15 @@ namespace LINQ
 
             List<string> test = new List<string>();
             test.Where(x => x.Contains("Manish"));
+            /*
+             * Select is all about transformation.
+             * Where is all about filtering
+             * */
+            IEnumerable<string> strings = new List<string> { "one", "two", "three", "four" };
+            // Will return { 3, 3, 5, 4 }
+            IEnumerable<int> result1 = strings.Select(str => str.Length);
+            var temp = employees.Select(x => x.Name.ToLower().Contains("a")).ToList();
+            var tempWhere = employees.Where(x => x.Name.Trim() == "Amit");
 
             List<Department> departments = new List<Department>()
             {
