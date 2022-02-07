@@ -78,6 +78,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolidPrincipals", "SolidPri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Liskov", "Liskov\Liskov.csproj", "{0120302A-138D-48EE-A3C6-7AC3D1DA26AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryPattern", "RepositoryPattern\RepositoryPattern.csproj", "{E6D57CF4-938A-4FF7-B53F-52A74E50417F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -228,6 +230,10 @@ Global
 		{0120302A-138D-48EE-A3C6-7AC3D1DA26AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0120302A-138D-48EE-A3C6-7AC3D1DA26AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0120302A-138D-48EE-A3C6-7AC3D1DA26AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6D57CF4-938A-4FF7-B53F-52A74E50417F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6D57CF4-938A-4FF7-B53F-52A74E50417F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6D57CF4-938A-4FF7-B53F-52A74E50417F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6D57CF4-938A-4FF7-B53F-52A74E50417F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

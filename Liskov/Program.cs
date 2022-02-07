@@ -90,6 +90,7 @@ namespace Liskov
     public class Manager : BaseEmployee, IHasManager
     {
         public IBaseEmployee AssignedManager { get; set; }
+
         public override double GetPay()
         {
             var currentSalary = 750;

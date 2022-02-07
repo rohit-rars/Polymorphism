@@ -27,17 +27,61 @@ namespace OverloadingAndOverriding
         }
         static void Main(string[] args)
         {
-            int a = 5;
-            Print(ref a);
-            Print(10.5, 10.4);
-
+            PossibleIps("12345");
             Console.ReadLine();
+        }
+
+        public static void PossibleIps(string str)
+        {
+            //List<string> ipList = new List<string>();
+            int len = str.Length;
+            string tempString = str;
+            for (int i = 1; i < len - 2; i++)
+            {
+                for (int j = i + 1; j < len - 1; j++)
+                {
+                    for (int k = j + 1; k < len; k++)
+                    {
+                        tempString = tempString.Substring(0, k) + "." + tempString.Substring(k);
+                        tempString = tempString.Substring(0, j) + "." + tempString.Substring(j);
+                        tempString = tempString.Substring(0, i) + "." + tempString.Substring(i);
+
+                        if (CheckIp(tempString))
+                        {
+                            Console.WriteLine("Vaild Ip: " + tempString);
+                            //ipList.Add(tempString);
+                        }
+
+                        tempString = str;
+                    }
+                }
+            }
+
+            //return ipList;
+        }
+
+        public static bool CheckIp(string strIp)
+        {
+            string[] tempArray = strIp.Split('.');
+            foreach (var tempIp in tempArray)
+            {
+                int i;
+                if (tempIp.Length > 3 || !int.TryParse(tempIp, out i) || i < 0 || i > 255)
+                    return false;
+                if (tempIp.Length > 1 && i == 0)
+                    return false;
+                if (tempIp.Length > 1 && i != 0
+                    && tempIp[0] == '0')
+                    return false;
+            }
+
+            return true;
         }
 
         // Base Class
         public class My_Family
         {
-            public void member()
+            public virtual void member()
             {
                 Console.WriteLine("Total number of family members: 3");
             }
@@ -48,7 +92,7 @@ namespace OverloadingAndOverriding
         {
 
 
-            public void member()
+            public override void member()
             {
 
                 // Calling the hidden method of the
