@@ -20,6 +20,7 @@ namespace ExtensionMethod
     {
         static void Main(string[] args)
         {
+            StringBuilder builder = new StringBuilder("Rohit");
             int i = 10;
             bool result = i.IsGreaterThan(100, 20);
             Console.WriteLine(result);

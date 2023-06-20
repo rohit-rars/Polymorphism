@@ -49,5 +49,41 @@ namespace Generic
                     data[index] = item;
             }
         }
+
+        class Base
+        {
+            public Base(int i)
+            {
+
+            }
+        }
+
+        class Child : Base
+        {
+            public Child(int j) : base(j)
+            {
+
+            }
+        }
+
+        static class SomeType<T>
+        {
+            public static T t;
+
+            static SomeType()
+            {
+
+            }
+
+            public static void Initialize(T t)
+            {
+                SomeType<T>.t = t;
+            }
+
+            public static T Method()
+            {
+                return t;
+            }
+        }
     }
 }

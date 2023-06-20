@@ -22,18 +22,52 @@ namespace OverloadingAndOverriding
         }
         public static void Print(double a, double b)
         {
-            Console.WriteLine(a);
-            Console.WriteLine(b);
+            
         }
         static void Main(string[] args)
         {
-            PossibleIps("12345");
+            //int[] arr = { 4, 8, 10, 2, 7, 5, 9 };
+            //int n = arr.Length;
+            //Console.Write("Minimum number of jumps to reach end is "
+            //              + minJumps(arr, 0, n - 1));
+
+            //My_Family fam = new My_Member();
+            //fam.member();
+            Base b = new Derived();
+            b.Show();
             Console.ReadLine();
         }
 
-        public static void PossibleIps(string str)
+        static int minJumps(int[] arr, int l, int h)
         {
-            //List<string> ipList = new List<string>();
+            // Base case: when source
+            // and destination are same
+            if (h == l)
+                return 0;
+
+            // When nothing is reachable
+            // from the given source
+            if (arr[l] == 0)
+                return int.MaxValue;
+
+            // Traverse through all the points
+            // reachable from arr[l]. Recursively
+            // get the minimum number of jumps
+            // needed to reach arr[h] from these
+            // reachable points.
+            int min = int.MaxValue;
+            for (int i = l + 1; i <= h && i <= l + arr[l]; i++)
+            {
+                int jumps = minJumps(arr, i, h);
+                if (jumps != int.MaxValue && jumps + 1 < min)
+                    min = jumps + 1;
+            }
+            return min;
+        }
+
+        public static List<string> PossibleIps(string str)
+        {
+            List<string> ipList = new List<string>();
             int len = str.Length;
             string tempString = str;
             for (int i = 1; i < len - 2; i++)
@@ -49,7 +83,7 @@ namespace OverloadingAndOverriding
                         if (CheckIp(tempString))
                         {
                             Console.WriteLine("Vaild Ip: " + tempString);
-                            //ipList.Add(tempString);
+                            ipList.Add(tempString);
                         }
 
                         tempString = str;
@@ -57,7 +91,7 @@ namespace OverloadingAndOverriding
                 }
             }
 
-            //return ipList;
+            return ipList;
         }
 
         public static bool CheckIp(string strIp)
@@ -81,7 +115,7 @@ namespace OverloadingAndOverriding
         // Base Class
         public class My_Family
         {
-            public virtual void member()
+            public void member()
             {
                 Console.WriteLine("Total number of family members: 3");
             }
@@ -92,7 +126,7 @@ namespace OverloadingAndOverriding
         {
 
 
-            public override void member()
+            public new void member()
             {
 
                 // Calling the hidden method of the

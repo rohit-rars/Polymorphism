@@ -102,7 +102,7 @@ namespace Singleton
 
             public void LogMessage(string message)
             {
-                Console.WriteLine("Message " + message);
+                Console.WriteLine(message);
             }
         }
     }

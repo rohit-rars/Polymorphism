@@ -8,237 +8,157 @@ namespace General
 {
     class Program
     {
-        static void Main(string[] args)
+        class Temp
         {
+            #region BinarySearch
 
-            // Declaring an integer array of size 11.
-            int[] arr1 = { 1, 2, 99, 9, 8,
-                    7, 6, 0, 5, 4, 3 };
-
-            // Printing the original Array.
-            Console.WriteLine("Original array: " +
-                               String.Join(", ", arr1));
-
-            // Sorting the array using a single loop
-            arr1 = sortArrays(arr1);
-
-            // Printing the sorted array.
-            Console.WriteLine("Sorted array: " +
-                               String.Join(", ", arr1));
-
-            // Declaring a String
-            String geeks = "GEEKSFORGEEKS";
-
-            // Declaring a character array
-            // to store characters of geeks in it.
-            char[] arr2 = geeks.ToCharArray();
-
-            // Printing the original Array.
-            Console.WriteLine("Original array: [" +
-                               String.Join(", ", arr2) + "]");
-
-            // Sorting the array using a single loop
-            arr2 = sortStringArrays(arr2);
-
-            // Printing the sorted array.
-            Console.WriteLine("Sorted array: [" +
-                               String.Join(", ", arr2) + "]");
-
-            string tempString = "rohit arora";
-            while(tempString.Length > 0)
+            public static void BinarySearch()
             {
-                int count = 0;
-                for (int i = 0; i < tempString.Length; i++)
+                /*
+                 * Time Complexity: The binary search algorithm has a time complexity of O(log n) - Logarithmic, where n is the number of elements in 
+                 * the sorted array. This is because at each step, the search space is divided in half, resulting in a logarithmic time 
+                 * complexity. It quickly eliminates half of the remaining elements with each comparison, leading to efficient search 
+                 * times even for large arrays.
+                 * 
+                 * Space Complexity: The space complexity of the binary search algorithm is O(1) - Constant, which means it uses constant space. 
+                 * The space required is independent of the size of the input array. Binary search only requires a few additional 
+                 * variables to keep track of the left and right indices and the midpoint during the search process. It does not require 
+                 * any additional data structures or memory allocation proportional to the input size. Hence, the space complexity is constant.
+                 */
+
+                int[] array = { 2, 5, 7, 10, 15, 18, 20 };
+                int target = 15;
+
+                int left = 0;
+                int right = array.Length - 1;
+                int index = -1;
+                while (left <= right)
                 {
-                    if(!string.IsNullOrWhiteSpace(tempString[0].ToString()) 
-                        && tempString[0].ToString().ToLower() == tempString[i].ToString().ToLower())
+                    int mid = left + (right - left) / 2;
+
+                    if (array[mid] == target)
                     {
-                        count++;
+                        index = mid; // Element found at index mid
+                        break;
+                    }
+                    else if (array[mid] < target)
+                    {
+                        left = mid + 1; // Target is in the right half of the array
+                    }
+                    else
+                    {
+                        right = mid - 1; // Target is in the left half of the array
                     }
                 }
 
-                if(count > 1)
+                if (index != -1)
                 {
-                    Console.WriteLine(string.Format("{0} Count is: {1}", tempString[0], count));
-                }
-
-                tempString = tempString.ToLower().Replace(tempString[0].ToString().ToLower(), string.Empty);
-                Console.WriteLine(tempString.Length);
-            }
-            
-
-            for (int i = 0; i < 4; i++)
-            {
-                for (int j = 4; j > i; j--)
-                {
-                    Console.Write(" ");
-                }
-
-                for (int k = 0; k <= i; k++)
-                {
-                    Console.Write(" *");
-                }
-
-                Console.WriteLine();
-            }
-
-            Console.Write("Enter Number to check for palindrom: ");
-            string checkValue = Console.ReadLine();
-            int checkforPalidrom = 0;
-            if(int.TryParse(checkValue, out checkforPalidrom) && checkforPalidrom > 0)
-            {
-                int origValue = checkforPalidrom;
-                int reversedValue = 0;
-                int mod = 0;
-                while(checkforPalidrom != 0)
-                {
-                    mod = checkforPalidrom % 10;
-                    reversedValue = reversedValue * 10 + mod;
-                    checkforPalidrom = checkforPalidrom / 10;
-                }
-
-                if(origValue == reversedValue)
-                {
-                    Console.Write(string.Format("{0} is palindrome", origValue));
+                    Console.WriteLine("Element found at index: " + index);
                 }
                 else
                 {
-                    Console.Write(string.Format("{0} is not palindrome", origValue));
+                    Console.WriteLine("Element not found in the array.");
                 }
             }
-            else
+
+            #endregion BinarySearch
+
+            #region BubbleSort
+
+            public static void BubbleSort()
             {
-                Console.WriteLine("Enter Int value greater than 0. Bye.");
-            }
+                /*
+                 * Time Complexity: The bubble sort algorithm has a time complexity of O(n^2) - Quadratic in the worst and average case, 
+                 * where n is the number of elements in the array. This is because the algorithm iterates over 
+                 * the array multiple times, comparing and swapping adjacent elements.
+                 * 
+                 * Space Complexity: The space complexity of the bubble sort algorithm is O(1), which means it uses constant space. 
+                 * The space required is independent of the size of the input array. Bubble sort only requires a few additional 
+                 * variables for temporary storage during the swapping process
+                 */
+                int[] array = { 64, 34, 25, 12, 22, 11, 90 };
+                int n = array.Length;
+                //bool swapped;
 
-            int[] array = new int[] { 5, 19, 2, 1, 56, 90 };
-            int foundat = BinarySearchIterative(array, 90);
-            if(foundat > -1)
-            {
-                Console.WriteLine("found at: " + foundat);
-            }
-
-            // declaring and initializing the array
-            int[] arr = new int[] { 1, 9, 6, 7, 5, 9 };
-
-            int temp;
-
-            // traverse 0 to array length
-            for (int i = 0; i < arr.Length - 1; i++)
-
-                // traverse i+1 to array length
-                for (int j = i + 1; j < arr.Length; j++)
-
-                    // compare array element with 
-                    // all next element
-                    if (arr[i] > arr[j])
+                for (int i = 0; i < n - 1; i++)
+                {
+                    //swapped = false;
+                    for (int j = 0; j < n - i - 1; j++)
                     {
-
-                        temp = arr[j];
-                        arr[j] = arr[i];
-                        arr[i] = temp;
-
-                        /* Without using var
-                         * a = 10, b = 5;
-                         * 
-                         * a = a+b; 15
-                         * b = a - b; 10
-                         * a = a - b; 5
-                         */
+                        if (array[j] > array[j + 1])
+                        {
+                            // Swap array[j] and array[j+1]
+                            int temp = array[j];
+                            array[j] = array[j + 1];
+                            array[j + 1] = temp;
+                            //swapped = true;
+                        }
                     }
 
-            // print all element of array
-            foreach (int value in arr)
-            {
-                Console.Write(value + " ");
+                    // If no elements were swapped in the inner loop, the array is already sorted
+                    //if (!swapped)
+                    //{
+                    //    break;
+                    //}
+                }
+
+                Console.WriteLine("Sorted array: " + string.Join(", ", array));
             }
 
-            Console.ReadKey();
-        }
+            #endregion BubbleSort
 
-        // Function for Sorting the array
-        // using a single loop
-        public static int[] sortArrays(int[] arr)
-        {
+            #region SelectionSort
 
-            // Finding the length of array 'arr'
-            int length = arr.Length;
-
-            // Sorting using a single loop
-            for (int j = 0; j < length - 1; j++)
+            public static void SelectionSort()
             {
+                /*
+                 * Selection sort is a simple and efficient sorting algorithm that works by repeatedly selecting the smallest (or largest) 
+                 * element from the unsorted portion of the list and moving it to the sorted portion of the list. 
+                 * 
+                 * Time Complexity: The selection sort algorithm has a time complexity of O(n^2) in the worst, best, and average cases, 
+                 * where n is the number of elements in the array. This is because the algorithm requires two nested loops to find 
+                 * the minimum element and perform the swap.
+                 * 
+                 * Space Complexity: The space complexity of the selection sort algorithm is O(1), indicating that it uses constant space. 
+                 * The space required is independent of the size of the input array. Selection sort only requires a few additional variables 
+                 * for temporary storage during the swapping process
+                 */
 
-                // Checking the condition for two
-                // simultaneous elements of the array
-                if (arr[j] > arr[j + 1])
+                int[] array = { 64, 34, 25, 12, 22, 11, 90 };
+                int n = array.Length;
+                //bool swapped;
+
+                for (int i = 0; i < n - 1; i++)
                 {
+                    int minIndex = i;
 
-                    // Swapping the elements.
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
+                    // Find the index of the minimum element in the unsorted part of the array
+                    for (int j = i + 1; j < n; j++)
+                    {
+                        if (array[j] < array[minIndex])
+                        {
+                            minIndex = j;
+                        }
+                    }
 
-                    // updating the value of j = -1
-                    // so after getting updated for j++
-                    // in the loop it becomes 0 and
-                    // the loop begins from the start.
-                    j = -1;
+                    // Swap the minimum element with the current element
+                    int temp = array[minIndex];
+                    array[minIndex] = array[i];
+                    array[i] = temp;
                 }
-            }
-            return arr;
-        }
 
-        public static char[] sortStringArrays(char[] arr)
-        {
-
-            // Finding the length of array 'arr'
-            int length = arr.Length;
-
-            // Sorting using a single loop
-            for (int j = 0; j < arr.Length - 1; j++)
-            {
-
-                // Type Conversion of char to int.
-                int d1 = arr[j];
-                int d2 = arr[j + 1];
-
-                // Comparing the ascii code.
-                if (d1 > d2)
-                {
-
-                    // Swapping of the characters
-                    char temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-                    j = -1;
-                }
-            }
-            return arr;
-        }
-
-        public static int BinarySearchIterative(int[] inputArray, int key)
-        {
-            Array.Sort(inputArray);
-            int min = 0;
-            int max = inputArray.Length - 1;
-            while (min <= max)
-            {
-                int mid = (min + max) / 2;
-                if (key == inputArray[mid])
-                {
-                    return ++mid;
-                }
-                else if (key < inputArray[mid])
-                {
-                    max = mid - 1;
-                }
-                else
-                {
-                    min = mid + 1;
-                }
+                Console.WriteLine("Sorted array: " + string.Join(", ", array));
             }
 
-            return -1;
+            #endregion SelectionSort
+
+            static void Main(string[] args)
+            {
+                BinarySearch();
+                BubbleSort();
+                SelectionSort();
+                Console.ReadKey();
+            }
         }
     }
 }

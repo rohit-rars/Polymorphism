@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,62 +24,66 @@ namespace Factory
     {
         static void Main(string[] args)
         {
-            iMainInterface scooter = Factory.MyFactory("Scooter");
-            scooter.Drive(10);
+            Creator mainFactory = new ConcreteCreator();
+            var scooter = mainFactory.FactoryMethod("pdf");
+            scooter.GetStream();
 
-            iMainInterface bike = Factory.MyFactory("Bike");
-            bike.Drive(20);
+            var bike = mainFactory.FactoryMethod("csv");
+            bike.GetStream();
 
             Console.ReadKey();
         }
 
-        public static class Factory
+        public interface IBaseFile
         {
-            public static iMainInterface MyFactory(string Vehicle)
+            Stream GetStream();
+        }
+
+        class PdfFile : IBaseFile
+        {
+            public Stream GetStream()
             {
-                switch (Vehicle)
+                return new MemoryStream();
+            }
+        }
+
+        class TextFile : IBaseFile
+        {
+            public Stream GetStream()
+            {
+                return new MemoryStream();
+            }
+        }
+
+        class CSVFile : IBaseFile
+        {
+            public Stream GetStream()
+            {
+                return new MemoryStream();
+            }
+        }
+
+        abstract class Creator
+        {
+            public abstract IBaseFile FactoryMethod(string type);
+        }
+
+
+        class ConcreteCreator : Creator
+        {
+            public override IBaseFile FactoryMethod(string fileType)
+            {
+                switch (fileType)
                 {
-                    case "Scooter":
-                        return new Scooter();
-                    case "Bike":
-                        return new Bike();
+                    case "txt":
+                        return new TextFile();
+                    case "csv":
+                        return new CSVFile();
+                    case "pdf":
+                        return new PdfFile();
                     default:
-                        throw new ApplicationException(string.Format("Vehicle '{0}' cannot be created", Vehicle));
+                        throw new ApplicationException(string.Format("Vehicle '{0}' cannot be created", fileType));
                 }
-            }
-        }
-
-        public interface iMainInterface
-        {
-            void Drive(int miles);
-        }
-
-        /// <summary>
-        /// A 'ConcreteProduct' class
-        /// </summary>
-        public class Scooter : iMainInterface
-        {
-            public void Drive(int miles)
-            {
-                Console.WriteLine("Drive the Scooter : " + miles.ToString() + "km");
-            }
-
-            public void ScooterDisplay()
-            {
-                Console.WriteLine("Scooter Display Method.");
-            }
-        }
-
-        public class Bike : iMainInterface
-        {
-            public void Drive(int miles)
-            {
-                Console.WriteLine("Drive the Bike : " + miles.ToString() + "km");
-            }
-
-            public void BikeDisplay()
-            {
-                Console.WriteLine("Bike Display Method.");
             }
         }
     }

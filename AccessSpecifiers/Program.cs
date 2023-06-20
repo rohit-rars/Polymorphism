@@ -52,10 +52,10 @@ namespace AccessSpecifiers
         static void Main(string[] args)
         {
             Test t1 = new Test();
-            // t1.TestProtected(); Complier error: inaccessible due to protection level.
+            //t1.TestProtected(); //Complier error: inaccessible due to protection level.
             Test1 t2 = new Test1();
             t2.TestPublic();
-            // t2.TestProtected(); Complier error: inaccessible due to protection level.
+            //t2.TestProtected();// Complier error: inaccessible due to protection level.
             Console.ReadKey();
         }
     }

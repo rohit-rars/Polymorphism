@@ -37,13 +37,11 @@ namespace LINQ
         {
             List<Employee> employees = new List<Employee>()
             {
-                 new Employee {ID=101,   Name="Amit  "    , Salary=4000,DEPT_ID=101},
-                 new Employee {ID=102,   Name="Amit  "    , Salary=3800,DEPT_ID=102},
-                 new Employee {ID=103,   Name="Salman"    , Salary=7000,DEPT_ID=103},
-                 new Employee {ID=104,   Name="Ram   "    , Salary=5000,DEPT_ID=101},
-                 new Employee {ID=105,   Name="Shyam "    , Salary=7000,DEPT_ID=102},
-                 new Employee {ID=106,   Name="Kishor"    , Salary=6000,DEPT_ID=103},
+                 new Employee {ID=101,   Name="Amit  "    , Salary=4000,DEPT_ID=101}
             };
+
+            var result3 = employees.SingleOrDefault();
+            var result2 = employees.FirstOrDefault();
 
             List<string> test = new List<string>();
             test.Where(x => x.Contains("Manish"));

@@ -81,7 +81,7 @@ namespace Delegate
              * Syntax difference between predicate & func is that here in predicate, you don't specify a return type because it is always a bool.
              */
             Predicate<string> CheckIfApple = IsApple;
-            bool resultPredicate = IsApple("I Phone X");
+            bool resultPredicate = CheckIfApple("I Phone X");
             if (resultPredicate)
                 Console.WriteLine("It's an IPhone");
 

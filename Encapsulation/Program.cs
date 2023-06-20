@@ -33,10 +33,10 @@ namespace Encapsulation
 
     public class DemoEncap
     {
-        private String studentName;
+        private string studentName;
         private int studentAge;
 
-        public String Name
+        public string Name
         {
             get
             {

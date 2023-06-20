@@ -26,7 +26,8 @@ namespace TPL
      * .NET Framework has thread-associated classes in System.Threading namespace.  A Thread is a small set of executable instructions.
      * 
      * -- Difference
-     * The Thread class is used for creating and manipulating a thread in Windows. A Task represents some asynchronous operation and is part of the Task 
+     * The Thread class is used for creating and manipulating a thread in Windows. A Task represents some asynchronous operation and is
+     * part of the Task 
      * Parallel Library, a set of APIs for running tasks asynchronously and in parallel.
      * 
      * The task can return a result. There is no direct mechanism to return the result from a thread.

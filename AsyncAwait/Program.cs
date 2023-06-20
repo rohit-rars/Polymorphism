@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AsyncAwait
@@ -17,6 +18,7 @@ namespace AsyncAwait
             var eggsTask = FryEggsAsync(2);
             var baconTask = FryBaconAsync(3);
             var toastTask = ToastBreadAsync(2);
+
 
             await Task.WhenAll(eggsTask, baconTask, toastTask);
             ApplyButter(toastTask.Result);
@@ -50,10 +52,35 @@ namespace AsyncAwait
                 Console.WriteLine("Putting a slice of bread in the toaster");
             }
 
+            var ct = new CancellationTokenSource();
+            CancellationToken token = ct.Token;
+
+
+            
+            var newTask = Task.Factory.StartNew(() =>
+            {
+                token.ThrowIfCancellationRequested();
+                if(!token.IsCancellationRequested)
+                {
+
+                }
+
+            }, token);
+
+            ct.CancelAfter(1000);
+
+            try
+            {
+                await newTask;
+            }
+            catch(OperationCanceledException ex)
+            {
+
+            }
             Console.WriteLine("Start toasting...");
-            await Task.Delay(2000);
+            //await Task.Delay(2000);
             Console.WriteLine("Fire! Toast is ruined!");
-            await Task.Delay(1000);
+            //await Task.Delay(1000);
             Console.WriteLine("Remove toast from toaster");
 
             return new Toast();
