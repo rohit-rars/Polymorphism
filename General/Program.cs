@@ -34,7 +34,7 @@ namespace General
                 int index = -1;
                 while (left <= right)
                 {
-                    int mid = left + (right - left) / 2;
+                    int mid = (left + right) / 2;
 
                     if (array[mid] == target)
                     {
@@ -152,11 +152,78 @@ namespace General
 
             #endregion SelectionSort
 
+            #region CountCharcaters
+
+            public static void CountCharcaters(string tempString)
+            {
+                if(!string.IsNullOrWhiteSpace(tempString))
+                {
+                    char checkChar = tempString[0];
+                    int count = 0, stringLength = tempString.Length - 1, currentIndex = -1;
+                    foreach (var tempChar in tempString)
+                    {
+                        currentIndex++;
+                        if(tempChar == checkChar)
+                        {
+                            count++;
+                        }
+                        else
+                        {
+                            Console.WriteLine("{0}: {1}", checkChar, count);
+                            checkChar = tempChar;
+                            count = 1;
+                        }
+
+                        if(currentIndex == stringLength)
+                        {
+                            Console.WriteLine("{0}: {1}", checkChar, count);
+                        }
+                    }
+                }
+            }
+
+            public static void SortAndCount(string tempString)
+            {
+                if (!string.IsNullOrWhiteSpace(tempString))
+                {
+                    var tempResult = string.Concat(tempString.OrderBy(x => x));
+                    CountCharcaters(tempResult);
+                }
+            }
+
+            public static void ManuallySortString(string tempString)
+            {
+                if (!string.IsNullOrWhiteSpace(tempString))
+                {
+                    var charArray = tempString.ToLower().ToCharArray();
+                    char temp;
+                    for (int i = 0; i < charArray.Length; i++)
+                    {
+                        for (int j = 0; j < charArray.Length - 1; j++)
+                        {
+                            if (charArray[j] > charArray[j + 1])
+                            {
+                                temp = charArray[j];
+                                charArray[j] = charArray[j + 1];
+                                charArray[j+1] = temp;
+                            }
+                        }
+                    }
+
+                    Console.WriteLine(charArray);
+                }
+            }
+
+            #endregion CountCharcaters
+
             static void Main(string[] args)
             {
                 BinarySearch();
                 BubbleSort();
                 SelectionSort();
+                CountCharcaters("aaaabbbbcdaaaccd");
+                SortAndCount("aaaabbbbcdaaaccd");
+                ManuallySortString("daskdasdkbasmdbasm");
                 Console.ReadKey();
             }
         }

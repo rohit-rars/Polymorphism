@@ -78,11 +78,15 @@ namespace ADONET
 
                 //Pass table Valued parameter to Store Procedure
                 SqlParameter sqlParam = cmd.Parameters.AddWithValue("@TempTable", myTable);
+                cmd.Parameters.Add(new SqlParameter("",SqlDbType.NVarChar));
                 sqlParam.SqlDbType = SqlDbType.Structured;
                 cmd.ExecuteNonQuery();
                 connection.Close();
                 Console.Write("Data Save Successfully.");
             }
+
+
+            
         }
 
         class TestDataReader

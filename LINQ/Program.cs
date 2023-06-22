@@ -37,10 +37,11 @@ namespace LINQ
         {
             List<Employee> employees = new List<Employee>()
             {
-                 new Employee {ID=101,   Name="Amit  "    , Salary=4000,DEPT_ID=101}
+                 new Employee {ID=101,   Name="Amit  "    , Salary=4000,DEPT_ID=101},
+                 new Employee {ID=102,   Name="Rohit"    , Salary=1000,DEPT_ID=102}
             };
 
-            var result3 = employees.SingleOrDefault();
+            var result3 = employees.SingleOrDefault(x => x.Name == "Rohit");
             var result2 = employees.FirstOrDefault();
 
             List<string> test = new List<string>();
@@ -53,6 +54,7 @@ namespace LINQ
             // Will return { 3, 3, 5, 4 }
             IEnumerable<int> result1 = strings.Select(str => str.Length);
             var temp = employees.Select(x => x.Name.ToLower().Contains("a")).ToList();
+            var tempSelect = employees.Select(x => x.Name == "Rohit");
             var tempWhere = employees.Where(x => x.Name.Trim() == "Amit");
 
             List<Department> departments = new List<Department>()
