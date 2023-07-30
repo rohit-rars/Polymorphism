@@ -45,14 +45,21 @@ Result Types In MVC:
 ActionResult:
 An ActionResult is a return type of a controller method, also called an action method, and serves as the base class for *Result classes. Action methods return models to views, file streams, redirect to other controllers, or whatever is necessary for the task at hand. The controller takes on this responsibility to connect system components, acting as a traffic cop. ActionResult is abstract class.
 
-Content Result:
-Content result returns different content's format to view. MVC returns different format using content return like HTML format, Java Script format and any other format.
 
 public ActionResult Contact()  
 {  
 	ViewBag.Message = "Your contact page.";
     return View();  
-}  
+}
+
+Content Result:
+The Content Result in ASP.NET MVC returns different content formats to the view like HTML format, JavaScript format, or any other format. We need to use the ContentResult in the ASP.NET MVC Application when we want to allow the action to specify what should it returned. All we need to do is specify the content and MIME type.
+
+public ContentResult Index()
+{
+	return Content("<h3>Here's a custom content header</h3>", "text/html", System.Text.Encoding.UTF8);
+}
+
 
 ViewResult:
 Renders a specified view to the response stream. View result is a basic view result. It returns basic results to view page. View result can return data to view page through which class is defined in the model. View page is a simple HTML page.
@@ -83,8 +90,6 @@ You can use RedirectToAction("Index", "Home", new { id = 5 }) which will generat
 You can use Redirect but must construct the URL yourself, so you pass Redirect("/Home/Index/5") or however your route table works.
 
 You can't redirect to google.com (an external URL) using RedirectToAction, you must use Redirect.
-
-
 
 public ActionResult Index()  
 {  

@@ -1,0 +1,172 @@
+C# & OOPS
+What are 4 piller of OOPS?
+Stack & Heap ?
+
+How do you implement abstraction in C#?
+
+
+Cohesion in OOP
+What is Coupling in OOP?
+What is the difference between cohesion and coupling?
+https://ducmanhphan.github.io/2019-03-23-Coupling-and-Cohension-in-OOP/#cohesion
+
+Why Doesn't C# Allow Static Methods to Implement an Interface? Why interface Cannot have static methods C#?
+What is the difference between Interface & Abstract class with code example
+Can you create an instance of an abstract class?.
+Can Abstract class be Sealed in C#?
+Can abstract class have Constructors in C#?
+Can you declare abstract methods as private in C#?
+
+.Net Framework
+Object lifecycle, memory allocation, GC 
+What is CLR?
+GC.Collect()
+Threading, async and await, ConfigureAwait 
+TPL -  Just aware of not worked
+difference between Delegates and javascript callbacks  
+
+
+MVC - All questions  
+What is the difference between ActionResult and ViewResult? 
+Action Filters in MVC? -  
+What is Output Caching in MVC? -  
+What is the use of Keep and Peek in “TempData”? -  
+If we have multiple filters, what’s the sequence for execution?
+Bundling & minification and real time scenarios
+
+Web API
+Http verbs (GET/POST/PUT/DELETE/PATCH) - OTIONS
+API versioning -  
+What if I have multiple search parameters and I have added it in query string, is it good way to do that. -  
+
+The purpose of using Web API
+Http verbs
+API versioning
+What if I have multiple search parameters and I have added it in query string, is it good way to do that .
+http patch.
+Dependency injection chaining – no idea
+
+https://gokhansengun.com/asp-net-mvc-and-web-api-comparison-of-async-or-sync-actions/
+Synchronous and asynchronous in web api.
+async and await
+
+.Net Core
+Diff between .Net core and .Net - 
+AddTransient, AddScoped and AddSingleton Services Differences
+Middleware Pipeline - 
+Swagger -
+
+Desin pattenrs used in project
+Repository pattern? 
+Observer design pattern - 
+Solid principles
+UnitContainer
+DI in project
+DI chaining in project
+DI Frameworks
+ 
+SQL & Database -  
+How can we improve the databas table performance? - 
+CTE ? - 
+TVP ? - 
+UDT ?
+NoSql -
+
+Sql
+Temporary Tables
+Table variable.
+Stored procedures
+
+Difference between Delegates and Events -
+
+What is Tuple?
+What is time Complexity of binary search?
+How to prevent deadlock and race condition in multi threaded environment?
+Difference between task TPL & Thread? Async & Await? ConfigureAwait -
+SemaphoreSlim Vs Semaphore?
+Different types of collections? Generic collection, non generic collections.
+main diff btwn IEnumerable vs IEnumerator & IList, IQuarable
+Any & Count  and which is better in performance wise
+ 
+Entity framework
+DB First / Code first approch - 
+How the mapping between entity and database ?
+
+Unit Tests
+Mock? - 
+Integration Testing / UI Integration Testing 
+
+Javascript
+What is Closure? - 
+Object Inheritance -  
+
+Application Security
+What all actions you would take to make sure that your application is secure from both front end and backend.
+
+Angular ?
+What is the difference between angularjs and angular
+What is typescript
+Explain different components or directives in angular
+Have hand-on experience in Angular 8 and says he is very confirmatable in working in Angular, have worked with the Angular latest version.
+
+Can you create an instance of an abstract class?.
+main diff btwn IEnumeration & IList
+Any & Count  and which is better in performance wise
+solid principles
+diff between .net core and .net 
+Garbage collection, use
+
+Entity Framework
+Entity framework - DB First approach - explained
+Unit Tests
+Unit testing – exp in Nunit and answered.
+Code coverage - No answered.
+
+
+Mandatory skill 1    •    Async programming
+•    OOPS
+•    Solid Principals
+•    Linq Queries
+•    Design Patterns
+•    Extension Classes
+     3     
+Mandatory skill 2    •    Web Api filters and execution flow
+•    Web Methods, headers & Root resolution process
+•    Web Attributes
+•    Dependency resolvers & dependency Injection
+•    Bundling & minification and real time scenarios
+
+ 
+
+     2.5     
+Mandatory skill 3    •    Usage of SP’s and functions
+•    Temp tables
+•    Indexes
+•    Query performance
+•    Joins and relationships      2.5     
+
+ 
+
+Merge to Array and Sort - Through array only
+Payload {} - Open closes are proper or not - Better than Khadar
+Log File - Problem and Solution, Stack Trace was there there - NuGet Package - 1st Round 
+No > 1 place left side of the array .. right side of array 
+Open Parathesesis close Parathesesis - Using Stack, using clue 
+State Maangement - Take data in Diff Pages - Session Management - Siddharat  
+
+ 
+
+Note - Bangalore, Pune - Siddhart
+
+ 
+
+•    Data structure related programs
+o    Stack
+o    Heep
+o    Queue
+o    Solving "{ , [, (" are correctly matched with given string
+o    Array related programs (soring in array, merging array and sorting, etc)
+•    One more question from Sid is
+o    How to carry data from one page to another. (state / session management technique)
+•     OOPS Concept
+•    Design pattern

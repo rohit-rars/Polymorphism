@@ -5,7 +5,7 @@ If you have a query that requires joining several tables, or has complex logic o
 
 2. Views can be used as a security mechanism
 A view can select certain columns and/or rows from a table (or tables), and permissions set on the view instead of the underlying tables. This allows surfacing only the data that a user needs to see.
-
+Praduja Naik
 
 Clustered Index:
 

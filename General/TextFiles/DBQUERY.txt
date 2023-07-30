@@ -5,8 +5,7 @@ FROM (
       FROM geosalary
       ) as t  --- this alias is missing
 WHERE t.dense_rank = 2
-
-
+Praveen Konaraddi
 SELECT e1.Name EmployeeName, e2.name AS ManagerName
 FROM Employee e1
 INNER JOIN Employee e2
