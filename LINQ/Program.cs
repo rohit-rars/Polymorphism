@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 
@@ -43,7 +45,6 @@ namespace LINQ
 
             var result3 = employees.SingleOrDefault(x => x.Name == "Rohit");
             var result2 = employees.FirstOrDefault();
-
             List<string> test = new List<string>();
             test.Where(x => x.Contains("Manish"));
             /*
@@ -69,9 +70,9 @@ namespace LINQ
                                on emp.DEPT_ID equals dept.DEPT_ID
                                select new
                                {
-                                   ID = emp.ID,
-                                   Name = emp.Name,
-                                   Salary = emp.Salary,
+                                   emp.ID,
+                                   emp.Name,
+                                   emp.Salary,
                                    DeptName = dept.DEPT_Name
                                }).ToList();
 

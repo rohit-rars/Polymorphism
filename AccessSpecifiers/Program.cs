@@ -33,7 +33,7 @@ namespace AccessSpecifiers
 
         */
 
-        class Test
+        private class Test
         {
             protected void TestProtected()
             {

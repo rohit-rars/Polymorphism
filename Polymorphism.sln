@@ -104,6 +104,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrpcConsoleApplication", "G
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adapter", "Adapter\Adapter.csproj", "{3AABBBC0-5DDD-4858-86E6-48723DDB3E0F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructure", "DataStructure\DataStructure.csproj", "{5B6B4AB9-FB73-4D3F-B22F-4619058644A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC", "MVC\MVC.csproj", "{90CFBBC6-553A-48BC-8974-88DDC1203608}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -294,6 +298,14 @@ Global
 		{3AABBBC0-5DDD-4858-86E6-48723DDB3E0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AABBBC0-5DDD-4858-86E6-48723DDB3E0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AABBBC0-5DDD-4858-86E6-48723DDB3E0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B6B4AB9-FB73-4D3F-B22F-4619058644A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B6B4AB9-FB73-4D3F-B22F-4619058644A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B6B4AB9-FB73-4D3F-B22F-4619058644A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B6B4AB9-FB73-4D3F-B22F-4619058644A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90CFBBC6-553A-48BC-8974-88DDC1203608}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90CFBBC6-553A-48BC-8974-88DDC1203608}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90CFBBC6-553A-48BC-8974-88DDC1203608}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90CFBBC6-553A-48BC-8974-88DDC1203608}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

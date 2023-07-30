@@ -125,6 +125,7 @@ namespace General
                  */
 
                 int[] array = { 64, 34, 25, 12, 22, 11, 90 };
+                List<int> list = new List<int>();
                 int n = array.Length;
                 //bool swapped;
 
@@ -214,16 +215,29 @@ namespace General
                 }
             }
 
+            public static void CountVowels(string inputString)
+            {
+                if (!string.IsNullOrWhiteSpace(inputString))
+                {
+                    char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
+                    var result = inputString.Count(x => x == 'a');
+
+                    Console.WriteLine(result);
+                }
+            }
+
             #endregion CountCharcaters
 
             static void Main(string[] args)
             {
+
                 BinarySearch();
                 BubbleSort();
                 SelectionSort();
                 CountCharcaters("aaaabbbbcdaaaccd");
                 SortAndCount("aaaabbbbcdaaaccd");
                 ManuallySortString("daskdasdkbasmdbasm");
+                CountVowels("daskdasdkbasmdbasm");
                 Console.ReadKey();
             }
         }

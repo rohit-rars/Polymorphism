@@ -42,8 +42,7 @@ namespace Abstraction
     abstract class TestAbstract
     {
         public abstract void display();
-
-        public TestAbstract(int i)
+        public TestAbstract()
         {
             Console.WriteLine("In Abstract class Constructor.");
         }
@@ -61,8 +60,6 @@ namespace Abstraction
 
     abstract class TestAbstract1 : TestAbstract
     {
-        public TestAbstract1(): base(10)
-        { }
         public abstract void display1();
     }
 
