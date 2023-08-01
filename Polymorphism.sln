@@ -108,6 +108,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructure", "DataStruct
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC", "MVC\MVC.csproj", "{90CFBBC6-553A-48BC-8974-88DDC1203608}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkDbFirst", "EntityFrameworkDbFirst\EntityFrameworkDbFirst.csproj", "{FFB894F9-74B6-4A34-8B78-0668D14731B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SessionTestCoreWebApi", "SessionTestCoreWebApi\SessionTestCoreWebApi.csproj", "{C664C45B-5442-44D8-839E-11B12787DACB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -306,6 +310,14 @@ Global
 		{90CFBBC6-553A-48BC-8974-88DDC1203608}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90CFBBC6-553A-48BC-8974-88DDC1203608}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90CFBBC6-553A-48BC-8974-88DDC1203608}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFB894F9-74B6-4A34-8B78-0668D14731B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFB894F9-74B6-4A34-8B78-0668D14731B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFB894F9-74B6-4A34-8B78-0668D14731B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFB894F9-74B6-4A34-8B78-0668D14731B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C664C45B-5442-44D8-839E-11B12787DACB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C664C45B-5442-44D8-839E-11B12787DACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C664C45B-5442-44D8-839E-11B12787DACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C664C45B-5442-44D8-839E-11B12787DACB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

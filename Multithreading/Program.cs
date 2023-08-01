@@ -16,7 +16,6 @@ namespace Multithreading
             Thread thread2 = new Thread(multithreading.Method2);
             thread1.Start();
             thread2.Start();
-            thread2.Abort
             Console.ReadKey();
         }
 

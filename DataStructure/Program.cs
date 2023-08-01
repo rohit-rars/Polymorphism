@@ -36,24 +36,55 @@ namespace DataStructure
             //string testString = @"Hello {this is Rohit.{{I am from Chandigah}}";
             //generalOpr.CheckOpenAndClosedParanthesis(testString, '{', '}');
             //generalOpr.JoinListAsString();
-            generalOpr.StatckOps();
+            //generalOpr.StatckOps();
+            generalOpr.MoveZerosAtEnd();
             Console.ReadKey();
         }
 
         class GeneralOperations
         {
+            //Move All Zeros at the end of Array
+            public void MoveZerosAtEnd()
+            {
+                try
+                {
+
+                    int[] mainArray = { 1, 2, 0, 3, 4, 0, 0, 6 };
+                    int count = 0;
+                    for (int i = 0; i < mainArray.Length; i++)
+                    {
+                        if (mainArray[i] != 0)
+                        {
+                            mainArray[count] = mainArray[i];
+                            count++;
+                        }
+                    }
+
+                    while (count < mainArray.Length)
+                    {
+                        mainArray[count] = 0;
+                        count++;
+                    }
+                    throw new NotImplementedException();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+            }
+
             // Count Paranthesis
-            public void CheckOpenAndClosedParanthesis(string checkString, char parentheSistoCheckOpen, char parentheSistoCheckClose)
+            public void CheckOpenAndClosedParanthesis(string checkString)
             {
                 int count = 0;
                 string message = "All Ok";
                 foreach (char c in checkString)
                 {
-                    if (c.Equals(parentheSistoCheckOpen))
+                    if (c.Equals('{'))
                     {
                         count++;
                     }
-                    else if(c.Equals(parentheSistoCheckClose))
+                    else if(c.Equals('}'))
                     {
                         if (count > 0)
                         {
@@ -84,58 +115,6 @@ namespace DataStructure
 
                 Console.WriteLine(string.Join(", ", listObj));
             }
-
-            //public void QueueOps()
-            //{
-            //    bool isError = false;
-            //    string tempString = @"Hi this is Rohit {([[]])}(check sum)";
-            //    Queue<char> charQueue = new Queue<char>();
-            //    foreach (var currentItem in tempString)
-            //    {
-            //        //char currentItem = tempString[i];
-            //        switch (currentItem)
-            //        {
-            //            case '{':
-            //            case '(':
-            //            case '[':
-            //                charQueue.Enqueue(currentItem);
-            //                break;
-            //            case ']':
-            //                var tempChar = charQueue.Dequeue();
-            //                if(tempChar != '[')
-            //                    isError = true;
-
-            //                break;
-            //            case '}':
-            //                var tempCurly = charQueue.Dequeue();
-            //                if (tempCurly != '{')
-            //                    isError = true;
-
-            //                break;
-            //            case ')':
-            //                var tempRound = charQueue.Dequeue();
-            //                if (tempRound != '(')
-            //                    isError = true;
-
-            //                break;
-            //            default:
-            //                break;
-            //        }
-
-            //        if (isError)
-            //            break;
-
-            //    }
-
-            //    if (isError || charQueue.Count > 0)
-            //    {
-            //        Console.WriteLine("Everything not Looking Good");
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("Everything Looks Good");
-            //    }
-            //}
 
             public void StatckOps()
             {
