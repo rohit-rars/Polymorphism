@@ -220,9 +220,9 @@ namespace General
                 if (!string.IsNullOrWhiteSpace(inputString))
                 {
                     char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
-                    var result = inputString.Count(x => x == 'a');
+                    var result = inputString.Count(x => vowels.Contains(x));
 
-                    Console.WriteLine(result);
+                    Console.WriteLine("Number of vowels in given string '{0}' are: {1}",inputString, result);
                 }
             }
 

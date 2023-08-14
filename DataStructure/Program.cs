@@ -37,8 +37,33 @@ namespace DataStructure
             //generalOpr.CheckOpenAndClosedParanthesis(testString, '{', '}');
             //generalOpr.JoinListAsString();
             //generalOpr.StatckOps();
+            generalOpr.CheckOpenAndClosedParanthesisAll();
             generalOpr.MoveZerosAtEnd();
             Console.ReadKey();
+        }
+
+        class AllCollections
+        {
+           
+            public void CheckCollections()
+            {
+                List<string> listString = new List<string>()
+                {
+                    "Rohit",
+                    "Rahul",
+                    "Rajwinder",
+                    "Raghu",
+                    "Nitish"
+                };
+
+                var result = listString.Where(x => x.StartsWith("R"));
+                var enumRator = result.GetEnumerator();
+                while(enumRator.MoveNext())
+                {
+                    Console.WriteLine(enumRator.Current);
+                }
+            }
+
         }
 
         class GeneralOperations
@@ -46,31 +71,35 @@ namespace DataStructure
             //Move All Zeros at the end of Array
             public void MoveZerosAtEnd()
             {
-                try
+                int[] mainArray = { 1, 2, 0, 3, 4, 0, 0, 6 };
+                int count = 0;
+                for (int i = 0; i < mainArray.Length; i++)
                 {
-
-                    int[] mainArray = { 1, 2, 0, 3, 4, 0, 0, 6 };
-                    int count = 0;
-                    for (int i = 0; i < mainArray.Length; i++)
+                    if (mainArray[i] != 0)
                     {
-                        if (mainArray[i] != 0)
-                        {
-                            mainArray[count] = mainArray[i];
-                            count++;
-                        }
-                    }
-
-                    while (count < mainArray.Length)
-                    {
-                        mainArray[count] = 0;
+                        mainArray[count] = mainArray[i];
                         count++;
                     }
-                    throw new NotImplementedException();
                 }
-                catch (Exception ex)
+
+                while (count < mainArray.Length)
                 {
-                    Console.WriteLine(ex);
+                    mainArray[count] = 0;
+                    count++;
                 }
+            }
+
+            // Join List As String 
+            public void JoinListAsString()
+            {
+                var listObj = new List<string>()
+                {
+                    "Rohit",
+                    "Test1",
+                    "AbcTest"
+                };
+
+                Console.WriteLine(string.Join(", ", listObj));
             }
 
             // Count Paranthesis
@@ -103,17 +132,57 @@ namespace DataStructure
                 Console.WriteLine(message);
             }
 
-            // Join List As String 
-            public void JoinListAsString()
+            public void CheckOpenAndClosedParanthesisAll()
             {
-                var listObj = new List<string>()
+                int count = -1;
+                string message = @"{([[]])}()";
+                bool isError = false;
+                char[] charStack = new char[message.Length];
+                foreach (char c in message)
                 {
-                    "Rohit",
-                    "Test1",
-                    "AbcTest"
-                };
+                    switch (c)
+                    {
+                        case '{':
+                            count++;
+                            charStack[count] = '}';
+                            break;
+                        case '(':
+                            count++;
+                            charStack[count] = ')';
+                            break;
+                        case '[':
+                            count++;
+                            charStack[count] = ']';
+                            break;
+                        case ']':
+                        case '}':
+                        case ')':
+                            if (count < 0)
+                                isError = true;
 
-                Console.WriteLine(string.Join(", ", listObj));
+                            if (!isError)
+                            {
+                                if (charStack[count] != c)
+                                    isError = true;
+
+                                charStack[count] = default;
+                                count--;
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+
+                if (isError || count > -1)
+                {
+                    Console.WriteLine("Everything not Looking Good");
+                }
+                else
+                {
+                    Console.WriteLine("Everything Looks Good");
+                }
             }
 
             public void StatckOps()
@@ -275,7 +344,7 @@ namespace DataStructure
                  * variables for temporary storage during the swapping process
                  */
 
-                int arrayLength = tempArray.Length -1;
+                int arrayLength = tempArray.Length - 1;
                 for (int i = 0; i < arrayLength; i++)
                 {
                     for (int j = 0; j < arrayLength - i; j++)
@@ -290,6 +359,97 @@ namespace DataStructure
                 }
 
                 return tempArray;
+            }
+
+            public void SelectionSort()
+            {
+                /*
+                 * Selection sort is a simple and efficient sorting algorithm that works by repeatedly selecting the smallest (or largest) 
+                 * element from the unsorted portion of the list and moving it to the sorted portion of the list. 
+                 * 
+                 * Time Complexity: The selection sort algorithm has a time complexity of O(n^2) in the worst, best, and average cases, 
+                 * where n is the number of elements in the array. This is because the algorithm requires two nested loops to find 
+                 * the minimum element and perform the swap.
+                 * 
+                 * Space Complexity: The space complexity of the selection sort algorithm is O(1), indicating that it uses constant space. 
+                 * The space required is independent of the size of the input array. Selection sort only requires a few additional variables 
+                 * for temporary storage during the swapping process
+                 */
+
+                int[] array = { 64, 34, 25, 12, 22, 11, 90 };
+                List<int> list = new List<int>();
+                int n = array.Length;
+                //bool swapped;
+
+                for (int i = 0; i < n - 1; i++)
+                {
+                    int minIndex = i;
+
+                    // Find the index of the minimum element in the unsorted part of the array
+                    for (int j = i + 1; j < n; j++)
+                    {
+                        if (array[j] < array[minIndex])
+                        {
+                            minIndex = j;
+                        }
+                    }
+
+                    // Swap the minimum element with the current element
+                    int temp = array[minIndex];
+                    array[minIndex] = array[i];
+                    array[i] = temp;
+                }
+
+                Console.WriteLine("Sorted array: " + string.Join(", ", array));
+            }
+
+            public void BinarySearch()
+            {
+                /*
+                 * Time Complexity: The binary search algorithm has a time complexity of O(log n) - Logarithmic, where n is the number of elements in 
+                 * the sorted array. This is because at each step, the search space is divided in half, resulting in a logarithmic time 
+                 * complexity. It quickly eliminates half of the remaining elements with each comparison, leading to efficient search 
+                 * times even for large arrays.
+                 * 
+                 * Space Complexity: The space complexity of the binary search algorithm is O(1) - Constant, which means it uses constant space. 
+                 * The space required is independent of the size of the input array. Binary search only requires a few additional 
+                 * variables to keep track of the left and right indices and the midpoint during the search process. It does not require 
+                 * any additional data structures or memory allocation proportional to the input size. Hence, the space complexity is constant.
+                 */
+
+                int[] array = { 2, 5, 7, 10, 15, 18, 20 };
+                int target = 15;
+
+                int left = 0;
+                int right = array.Length - 1;
+                int index = -1;
+                while (left <= right)
+                {
+                    int mid = (left + right) / 2;
+
+                    if (array[mid] == target)
+                    {
+                        index = mid; // Element found at index mid
+                        break;
+                    }
+                    else if (array[mid] < target)
+                    {
+                        left = mid + 1; // Target is in the right half of the array
+                    }
+                    else
+                    {
+                        right = mid - 1; // Target is in the left half of the array
+                    }
+                }
+
+                if (index != -1)
+                {
+                    Console.WriteLine("Element found at index: " + index);
+                }
+                else
+                {
+                    Console.WriteLine("Element not found in the array.");
+                }
             }
         }
 
